@@ -1,0 +1,118 @@
+h1 {
+	color:#5555CC;
+	text-decoration:none;
+	background-image: url('http://alexlop.com/stock/img/stock2.png');
+	background-repeat: no-repeat;
+	text-indent: 2em;
+	height:48px;
+}
+
+h2 {
+	color:#5555CC;
+	text-decoration:none;
+	background-repeat: no-repeat;
+	text-indent: 2em;
+}
+
+h3 {
+	color:#444499;
+	text-decoration:none;
+	background-repeat: no-repeat;
+	text-indent: 2em;
+}
+
+
+a.discret, .discret{
+	display:none;
+}
+
+.affichage{
+	color : #FF4444;
+	background-color: #FFEEEE;
+	border: 1px solid #FFBBBB;
+	padding:3px;
+}
+
+ul.menu, li.menu { display: inline; }
+
+th{
+		font: bold 11px Verdana, Arial, Helvetica,sans-serif;
+		color: #6D929B;
+		border-right: 1px solid #C1DAD7;
+		border-bottom: 1px solid #C1DAD7;
+		border-top: 1px solid #C1DAD7;
+		letter-spacing: 2px;
+		text-transform: uppercase;
+		text-align: left;
+		padding: 6px 6px 6px 12px;
+	
+}
+th.listingtitre{
+		background: #CAE8EA url(./img/bg_headertit.jpg) no-repeat;
+}
+th.listingcateg{
+		background: #CAE8EA url(./img/bg_headercateg.jpg) no-repeat;
+}
+
+th.listingprod{
+		background: #CAE8EA url(./img/bg_headerprod.jpg) no-repeat;	
+}
+th.listingproddiscret{
+		display:none;
+}
+
+a.listingprod:link,a.listingprod:visited {
+	color: #6D929B;
+	text-decoration:underline;
+}
+
+a.listingprod:hover {
+	color: #252277;
+	text-decoration:underline;
+}
+
+tr {
+	font-family :Verdana, Arial, Helvetica,sans-serif;
+	font-size: 11px;
+	border-right: 1px solid #C1DAD7;
+	border-bottom: 1px solid #C1DAD7;
+	background: #DEDEDE;
+	padding: 6px 6px 6px 12px;
+	color: #6D929B;
+}
+
+td.case {
+	
+	border-right: 1px solid #C1DAD7;
+	border-bottom: 1px solid #C1DAD7;
+}
+
+
+td.casediscret {
+	display:none;
+}
+
+
+tr.alt {
+	background: #fff;
+	color: #747474;
+}
+tr.clean {
+	background: #fff;
+	color: #747474;
+}
+
+tr.stock {
+	background: #F5C4C5;
+	color: #FF1417;
+}
+tr.bientotstock {
+	background: #F0D7BB;
+	color: #F58905;
+}
+
+
+tr:hover {
+	background: #9B9AFF;
+	color: #252277;
+}
