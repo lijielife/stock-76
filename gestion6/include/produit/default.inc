@@ -39,7 +39,7 @@
 	
 	$total = 0;
 	$texto.= "<form name=\"cherch\" action=\"./produit\" method=\"get\" accept-charset=\"utf-8\">
-	<p>	<input  autocomplete=\"off\" class=\"actif\" type=\"text\" id=\"txt_search\" name=\"search\" value=\"\"><input type=\"submit\" value=\"rechercher\"></p>
+	<p>	<input  autocomplete=\"off\" class=\"actif corners\" type=\"text\" id=\"txt_search\" name=\"search\" value=\"\"><input type=\"submit\" value=\"rechercher\"></p>
 	</form><form action=\"./produit?action=commander\" method=\"post\"><span id=\"suggest\">
 	";
 	if(isset($_GET['search'])){

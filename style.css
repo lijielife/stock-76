@@ -20,12 +20,12 @@ margin:1px;
 body {
 	margin:0px;
 	font-family: sans-serif;
-	background-color:#F0F0F0;
+	background-color:#fff;
 	}
 
 h1 {
 	font-family: Verdana;
-	color:#5555CC;
+	color:#498BF4;
 	text-decoration:none;
 	height:48px;
 	margin-top:0px;
@@ -86,9 +86,10 @@ h1 {
 input.actif, textarea.actif {
 font-size:13px;
 padding:4px;
-border: 2px solid #9999DD;
+border: 2px solid #498BF4;
 font-weight: bold;
 margin:5px;
+width:200px;
 }
 
 input.TQbk {
@@ -104,7 +105,6 @@ input.TQbk:focus{
 	border: 1px solid #DD99AA;
 	outline:none;
 	background-color: #FFEEBB;
-	
 }
 
 input.tresactif {
@@ -129,9 +129,14 @@ input:focus, textarea:focus{
 label {
 display: block;
 width: 160px;
+font-size:13px;
+padding:6px;
 float: left;
 }
 
+fieldset{
+	width: 500px;
+}
 .affichage{
 	color : #FF4444;
 	background-color: #FFEEEE;
@@ -147,19 +152,12 @@ float: left;
 /* ============================================= boxes ============================================= */
 .box { display: block; padding: 12px 12px 12px 52px; color: #333; text-decoration: none; margin: 20px 0; font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif; }	
 .box:hover { color: #000; text-decoration:none; }
-.close { width: 9px; height: 9px; float: right; background: url("../images/close_box.png") no-repeat left top; margin: 6px 0; }
-.close:hover { background: url("../images/close_box.png") no-repeat left bottom; }
 .succes { border: 1px solid #b3dc7c; background: url(./img/success.png) no-repeat 10px 50% #e8ffca; }
 .error { border: 1px solid #ebb1b1; background: url(./img/error.png) no-repeat 10px 50% #ffd6d6; }
 .warning { border: 1px solid #efdc75; background: url(./img/warning.png) no-repeat 10px 50% #fff7cb; }
 .info { border: 1px solid #afdbee; background: url(./img/info.png) no-repeat 10px 50% #e4f5fd; }
 /* ============================================= corners ============================================= */
-.corners { -moz-border-radius:8px; -webkit-border-radius:8px; border-radius: 8px; }
-.corners_bottom { -moz-border-radius-bottomleft:6px; -moz-border-radius-bottomright:6px; -webkit-border-bottom-left-radius:6px; -webkit-border-bottom-right-radius:6px;border-bottom-left-radius: 6px; border-bottom-right-radius: 6px; }
-.corners_top { -moz-border-radius-topleft:6px; -moz-border-radius-topright:6px; -webkit-border-top-left-radius:6px; -webkit-border-top-right-radius:6px; border-top-right-radius: 6px; border-top-left-radius: 6px; }
-.corners_left { -moz-border-radius-bottomleft:6px; -moz-border-radius-topleft:6px; -webkit-border-bottom-left-radius:6px; -webkit-border-top-left-radius:6px; border-top-left-radius: 6px; border-bottom-left-radius: 6px; }
-.corners_right { -moz-border-radius-bottomright:6px; -moz-border-radius-topright:6px; -webkit-border-bottom-right-radius:6px; -webkit-border-top-right-radius:6px; border-top-right-radius: 6px; border-bottom-right-radius: 6px; }
-
+.corners { -moz-border-radius:4px; -webkit-border-radius:4px; border-radius: 4px; }
 
 #supermenu{
 	font-family: Verdana;
@@ -179,9 +177,33 @@ a.supermenu{
 }
 
 
-ul.menu, li.menu { 	font-family: Verdana; font-weight: bold; display: inline;}
-ul.sousmenu, li.sousmenu { 	font-family: Verdana; display: inline; }
+ul.menu, li.menu, a.menu{ font-family: Verdana; font-weight: bold; display: inline-block; text-decoration: none; font-size:14px;color:#555;}
+ul.sousmenu { margin-left:15px;}
 ul.retrait, li.retrait { display: block; list-style-type: none;color:#333 }
+
+ a.menu{
+	-webkit-border-radius:2px;
+	-moz-border-radius:2px;
+	border-radius:2px;
+	font-weight:bold;
+	text-align:center;
+	margin-right:16px;
+	height:27px;
+	line-height:27px;
+	min-width:54px;
+	outline:0;
+	padding:6px;
+	background-color:#f5f5f5;
+	color:#555;
+	border:1px solid #dcdcdc;
+	display: block;
+	}
+ a.menu:hover{
+	color:#498BF4;
+	border:1px solid #bbb;
+	background-color:#FAFAFA;
+	
+}
 
 .retraitprod{
 	font-family: Verdana;
@@ -283,7 +305,7 @@ tr {
 	font-size: 11px;
 	border-left: 1px solid #5C5C5C;
 	border-right: 1px solid #5C5C5C;
-	background: #DFDFDF;
+	background: #EEE;
 	padding: 6px 6px 6px 12px;
 	color: #5C5C5C;
 	
@@ -367,10 +389,14 @@ border-bottom:1px solid #555;
 			line-height: 35px;
 			color: #666;
 			border: 0;
+				text-decoration: none;
+
 			}
 				#subnavigation ul li a:hover {
 				color: #fff;
-				background: #aaa;
+				background: #498BF4;
+					text-decoration: none;
+
 				}
 tr.selecttorque, th.selecttorque{height:5px;padding:0;}
 td.videselect{

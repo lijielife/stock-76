@@ -29,28 +29,34 @@
 	$texto .="<form method=\"post\" name='creation' action=\"./produit?action=save\" accept-charset=\"utf-8\">
 			<FIELDSET align=\"left\"> 
 			    <LEGEND>Infos produits</LEGEND>
+			<table>
 	<input type=\"hidden\" name=\"action\" value=\"newprod\" />
-	<label for=\"categorie\">Categorie :</label><select name=\"categorie\" class=\"actif corners\" id=\"categorie\" style=\"width:160px;\">\n$catcat\n</select><br />
-	<label for=\"produit\">Produit : </label><input class=\"actif corners\" type=\"text\" name=\"produit\" value=\"\" id=\"produit\" /><br />
-	<label for=\"fournisseur\">Fournisseur : </label><select class=\"actif corners\" name=\"fournisseur\" id=\"fournisseur\" >$lesfourn</select><br />
-	<label for=\"reference\">Reference : </label><input class=\"actif corners\" type=\"text\" name=\"reference\" value=\"\" id=\"reference\" /><br />
-	<label for=\"conditionnement\">Conditionnement : </label><input class=\"actif corners\" type=\"text\" name=\"conditionnement\" value=\"\" id=\"conditionnement\" /><br />
-	<label for=\"used\">produit utilis&eacute; : </label><input class=\"actif corners\" CHECKED type=\"checkbox\" name=\"used\" value=\"1\" id=\"used\" /><br />
+	<tr><td><label for=\"categorie\">Categorie :</label></td><td><select name=\"categorie\" class=\"actif corners\" id=\"categorie\" style=\"width:160px;\">\n$catcat\n</select></td></tr>
+	<tr><td><label for=\"produit\">Produit : </label></td><td><input class=\"actif corners\" type=\"text\" name=\"produit\" value=\"\" id=\"produit\" /></td></tr>
+	<tr><td><label for=\"fournisseur\">Fournisseur : </label></td><td><select class=\"actif corners\" name=\"fournisseur\" id=\"fournisseur\" >$lesfourn</select></td></tr>
+	<tr><td><label for=\"reference\">Reference : </label></td><td><input class=\"actif corners\" type=\"text\" name=\"reference\" value=\"\" id=\"reference\" /></td></tr>
+	<tr><td><label for=\"conditionnement\">Conditionnement : </label></td><td><input class=\"actif corners\" type=\"text\" name=\"conditionnement\" value=\"\" id=\"conditionnement\" /></td></tr>
+	<tr><td><label for=\"used\">produit utilis&eacute; : </label></td><td><input class=\"actif corners\" CHECKED type=\"checkbox\" name=\"used\" value=\"1\" id=\"used\" /></td></tr>
+	</table>
 	</FIELDSET>
 	<br />
 	<FIELDSET align=\"left\"> 
 	    <LEGEND>prix et stock</LEGEND>
-	<label for=\"prix\">Prix : </label><input class=\"actif corners\" type=\"text\" name=\"prix\" value=\"\" id=\"prix\" />Euros TTC<br />
-	<label for=\"stock\">stock : </label><input class=\"actif corners\" type=\"text\" name=\"stock\" value=\"\" id=\"stock\" /><br />
-	<label for=\"stock_mini\">stock_mini : </label><input class=\"actif corners\" type=\"text\" name=\"stock_mini\" value=\"\" id=\"stock_mini\" /><br />	
+	<table>
+	<tr><td><label for=\"prix\">Prix : </label></td><td><input class=\"actif corners\" type=\"text\" name=\"prix\" value=\"\" id=\"prix\" />Euros TTC</td></tr>
+	<tr><td><label for=\"stock\">stock : </label></td><td><input class=\"actif corners\" type=\"text\" name=\"stock\" value=\"\" id=\"stock\" /></td></tr>
+	<tr><td><label for=\"stock_mini\">stock_mini : </label></td><td><input class=\"actif corners\" type=\"text\" name=\"stock_mini\" value=\"\" id=\"stock_mini\" /></td></tr>	
+	</table>
 	</FIELDSET>
 	<br />
 	<FIELDSET align=\"left\"> 
 	    <LEGEND>Commande</LEGEND>
-	<label for=\"commande\">commande en cours : </label><input class=\"actif corners\"  type=\"checkbox\" name=\"commande\" value=\"1\" id=\"commande\" /><br />
-	<label for=\"quantite_commande\">quantite command&eacute;e : </label><input class=\"actif corners\" type=\"text\" name=\"quantite_commande\" value=\"\" id=\"quantite_commande\" /><br />	
-	<br />
+	<table>
+	<tr><td><label for=\"commande\">commande en cours : </label></td><td><input class=\"actif corners\"  type=\"checkbox\" name=\"commande\" value=\"1\" id=\"commande\" /></td></tr>
+	<tr><td><label for=\"quantite_commande\">quantite command&eacute;e : </label></td><td><input class=\"actif corners\" type=\"text\" name=\"quantite_commande\" value=\"\" id=\"quantite_commande\" /></td></tr>	
+	</table>
 		</FIELDSET> 
+		<br />
 	<input type=\"submit\" name=\"submitbutton\" value=\"valider\" /><input type=\"button\" name=\"cancel\" value=\"annuler\" onclick=\"history.back()\" />
 	</form>";
 	
