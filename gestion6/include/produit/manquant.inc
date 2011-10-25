@@ -11,7 +11,7 @@
 	$total = 0;
 	$previouscommande=false;
 	$texto.= "<form name=\"cherch\" action=\"./produit?action=search\" method=\"post\" accept-charset=\"utf-8\">
-	<p>	<input autocomplete=\"off\"  class=\"actif\" type=\"text\" id=\"txt_search\" name=\"search\" value=\"\"><input type=\"submit\" value=\"rechercher\"></p>
+	<p>	<input autocomplete=\"off\"  class=\"actif\" type=\"text\" id=\"txt_search\" name=\"search\" value=\"\"><input class=\"medium button blue\" type=\"submit\" value=\"rechercher\"></p>
 	</form><span id=\"suggest\">
 	<form action=\"./produit?action=commander\" method=\"post\">
   <table cellspacing=\"0\" style=\"clear:both\" >\n";

@@ -29,6 +29,7 @@ h1 {
 	text-decoration:none;
 	height:48px;
 	margin-top:0px;
+	margin-bottom:0px;
 }
 
 a:link{
@@ -157,12 +158,12 @@ a.supermenu{
 }
 
 
-ul.menu, li.menu, a.menu{ font-family: Verdana; font-weight: bold; display: inline-block; text-decoration: none; font-size:14px;color:#555;}
-ul.sousmenu { margin-left:15px;}
+ul.menu, li.menu, a.menu{ font-family: Verdana; font-weight: bold; display: inline-block; text-decoration: none; font-size:14px;color:#555;	margin-bottom:0px;}
+ul.sousmenu { margin-left:15px;	margin-bottom:30px;}
 ul.retrait, li.retrait { display: block; list-style-type: none;color:#333 }
 
  a.menu{
-	background: #222 url(./img/overlay.png) repeat-x; 
+	background: #f5f5f5 url(./img/overlay.png) repeat-x; 
 	-webkit-border-radius:2px;
 	-moz-border-radius:2px;
 	border-radius:2px;
