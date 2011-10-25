@@ -187,7 +187,7 @@ ul.retrait, li.retrait { display: block; list-style-type: none;color:#333 }
 }
 
 /*=============================================boutons===========================================*/
-.button, .button:visited {
+.button, .button:visited, a.button  {
 	font-family: Verdana, Arial, "MS Trebuchet", sans-serif;
 	display: inline-block; 
 	background: #222 url(./img/overlay.png) repeat-x; 
@@ -208,7 +208,7 @@ ul.retrait, li.retrait { display: block; list-style-type: none;color:#333 }
     border: none;
 }
  
-	.button:hover							{ background-color: #111; color: #fff; }
+	.button:hover						{ background-color: #111; color: #fff; }
 	.button:active							{ top: 1px; }
 	.small.button, .small.button:visited 			{ font-size: 11px}
 	.button, .button:visited,
