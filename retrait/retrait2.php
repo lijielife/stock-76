@@ -63,7 +63,7 @@ $texto .= "
 <input class=\"actif\" style=\"font-size:25px;width:50px;text-indent:10px;\" type=\"text\" onblur=\"aumoins();\" name=\"retraitstock\" value=\"1\" id=\"retraitstock\">
 <input style=\"font-size:25px\" type=\"button\" name=\"moins\" onClick=\"enmoins();\" value=\"-\" id=\"lemoins\">
 </p>
-<p><input type=\"submit\" name=\"submitretrait\" value=\"retirer du stock\" id=\"submitretrait\"></p>
+<p><input class=\"large button red\" type=\"submit\" name=\"submitretrait\" value=\"retirer du stock\" id=\"submitretrait\"></p>
 </form>
 </div>\n";
 $texto .= "

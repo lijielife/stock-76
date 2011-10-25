@@ -75,7 +75,7 @@ $texto .= "
 <option value=\"30\">30</option>
 <option value=\"40\">40</option>
 <option value=\"50\">50</option>
-</select><br /><br /><input type=\"submit\" name=\"submitretrait\" value=\"retirer du stock\" id=\"submitretrait\"></p>
+</select><br /><br /><input class=\"large button red\" type=\"submit\" name=\"submitretrait\" value=\"retirer du stock\" id=\"submitretrait\"></p>
 </form>
 </div>\n";
 $texto .= "

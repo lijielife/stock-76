@@ -64,12 +64,12 @@
 		$nblignemax++;
 	}
 	//vcxvcx
-    $texto .="<table/>";
+    $texto .="</table>";
 	$texto .="<input type='hidden' name='nbdeprod' value='$nbdeprod' />
-	<input style='cursor:pointer;background-color:#FF2814;margin-top: 10px;border:4px outset #FF5F52;height:50px;width:90%;font-size:20px;'
+	<input class=\"large button blue\" 
  type=\"submit\" name=\"submitbutton\"  value=\"passer commande/ imprimer\" id=\"submitbutton\">
 	<br />
-	<input type=\"button\" name=\"cancel\" value=\"annuler\" onclick=\"history.back()\"></form>";
+	<input class=\"small button red\"  type=\"button\" name=\"cancel\" value=\"annuler\" onclick=\"history.back()\"></form>";
 	
 
 ?>

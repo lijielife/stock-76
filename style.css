@@ -31,6 +31,10 @@ h1 {
 	margin-top:0px;
 }
 
+a:link{
+	color:#498BF4;
+	text-decoration:none;
+}
 
 .titreretrait{
 	color:#FFF;
@@ -54,33 +58,15 @@ h1 {
 }
 
 #leplus, #lemoins{
-	cursor:pointer;
-	background-color:#FF2814;
-	border:3px outset #FF5F52;
-	height:40px;
 	width:50px;
 	font-size:20px;
 }
 
 #leplus:hover, #lemoins:hover{
-	border:3px inset #FF5F52;
-	background-color:#C01D0E;
+
 	color:white;
 }
 
-#submitretrait{
-	cursor:pointer;
-	background-color:#FF2814;
-	border:4px outset #FF5F52;
-	height:50px;
-	width:80%;
-	font-size:20px;
-}
-#submitretrait:hover{
-	border:4px inset #FF5F52;
-	background-color:#C01D0E;
-	color:white;
-}
 
 
 input.actif, textarea.actif {
@@ -123,9 +109,9 @@ border: 3px solid #CCCCCC;
 input:focus, textarea:focus{
 	border: 2px solid #DD99AA;
 	outline:none;
-	background-color: #FFEEBB;
-	
+	background-color: #FFEEBB;	
 }
+
 label {
 display: block;
 width: 160px;
@@ -135,18 +121,12 @@ float: left;
 }
 
 fieldset{
-	width: 500px;
+	width: 600px;
 }
 .affichage{
-	color : #FF4444;
-	background-color: #FFEEEE;
-	border: 1px solid #FFBBBB;
-	padding:3px;
-	margin: 10px;
-	background-image: url(./img/error.png);
-	background-repeat: no-repeat;
-	background-position:  10px;
-	background-color: #ffd6d6;
+	display: block; padding: 12px 12px 12px 52px; color: #333; text-decoration: none; margin: 20px 0; font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	border: 1px solid #ebb1b1; background: url(./img/error.png) no-repeat 10px 50% #ffd6d6;
+	-moz-border-radius:4px; -webkit-border-radius:4px; border-radius: 4px;
 }
 
 /* ============================================= boxes ============================================= */
@@ -182,6 +162,7 @@ ul.sousmenu { margin-left:15px;}
 ul.retrait, li.retrait { display: block; list-style-type: none;color:#333 }
 
  a.menu{
+	background: #222 url(./img/overlay.png) repeat-x; 
 	-webkit-border-radius:2px;
 	-moz-border-radius:2px;
 	border-radius:2px;
@@ -204,6 +185,62 @@ ul.retrait, li.retrait { display: block; list-style-type: none;color:#333 }
 	background-color:#FAFAFA;
 	
 }
+
+/*=============================================boutons===========================================*/
+.button, .button:visited {
+	font-family: Verdana, Arial, "MS Trebuchet", sans-serif;
+	display: inline-block; 
+	background: #222 url(./img/overlay.png) repeat-x; 
+	padding: 5px 10px 6px; 
+	color: #fff; 
+	text-decoration: none;
+	-moz-border-radius: 6px; 
+	-webkit-border-radius: 6px;
+	-moz-box-shadow: 0 1px 3px rgba(0,0,0,0.6);
+	-webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.6);
+	text-shadow: 0 -1px 1px rgba(0,0,0,0.25);
+	position: relative;
+	cursor: pointer;
+	 
+    text-transform: uppercase; 
+    margin-top: 10px;
+    background-color: #18a5cc;
+    border: none;
+}
+ 
+	.button:hover							{ background-color: #111; color: #fff; }
+	.button:active							{ top: 1px; }
+	.small.button, .small.button:visited 			{ font-size: 11px}
+	.button, .button:visited,
+	.medium.button, .medium.button:visited 		{ font-size: 13px; 
+												  font-weight: bold; 
+												  line-height: 1; 
+												  text-shadow: 0 -1px 1px rgba(0,0,0,0.25); 
+												  }
+												  
+	.large.button, .large.button:visited 			{ height:50px;width:90%;font-size:20px;
+													  padding: 8px 14px 9px; }
+													  
+	.super.button, .super.button:visited 			{ font-size: 34px; 
+													  padding: 8px 14px 9px; }
+	
+	.pink.button, .magenta.button:visited		{ background-color: #e22092; }
+	.pink.button:hover							{ background-color: #c81e82; }
+	.green.button, .green.button:visited		{ background-color: #91bd09; }
+	.green.button:hover						    { background-color: #749a02; }
+	.red.button, .red.button:visited			{ background-color: #e62727; }
+	.red.button:hover							{ background-color: #cf2525; }
+	.orange.button, .orange.button:visited		{ background-color: #ff5c00; }
+	.orange.button:hover						{ background-color: #d45500; }
+	.blue.button, .blue.button:visited		    { background-color: #2981e4; }
+	.blue.button:hover							{ background-color: #2575cf; }
+	.yellow.button, .yellow.button:visited		{ background-color: #ffb515; }
+	.yellow.button:hover						{ background-color: #fc9200; }
+
+
+/* -------------------------------------fin boutons--------------------------------- */
+
+
 
 .retraitprod{
 	font-family: Verdana;
@@ -300,6 +337,13 @@ a.listingprod:hover {
 	text-decoration:underline;
 }
 
+table{
+	border: 1px solid #8C8C8C;
+	-moz-border-radius:8px; -webkit-border-radius:8px; border-radius: 8px;
+	padding: 4px;
+	background-color: #FFF;
+
+}
 tr {
 	font-family :Verdana, Arial, Helvetica,sans-serif;
 	font-size: 11px;
@@ -315,7 +359,7 @@ td{
 	border-bottom: 0px solid #C1DAD7;
 	padding-left: 10px;
 	padding-right: 10px;
-	border-left: 1px solid #CCC;
+	text-align:left;
 }
 
 tr.alt {
@@ -374,7 +418,7 @@ background-image: url(./img/ministock.png);
 background-repeat: no-repeat;
 background-position: 3px 1px;
 padding-left:25px;
-border-bottom:1px solid #555;
+border-bottom:1px solid #999;
 
 }
 	#subnavigation { margin: 0 0 0 1.5%; }

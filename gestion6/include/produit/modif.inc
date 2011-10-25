@@ -100,7 +100,7 @@ $texto .="<h3>Modification de Produit</h3>";
 	</table>
 	</FIELDSET>
 	<br />
-	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type=\"submit\" name=\"submitbutton\" value=\"valider\" /><input type=\"button\" name=\"cancel\" value=\"annuler\" onclick=\"history.back()\" /></form>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class=\"medium button red\" type=\"button\" name=\"cancel\" value=\"annuler\" onclick=\"history.back()\" /><input class=\"medium button blue\" type=\"submit\" name=\"submitbutton\" value=\"valider\" /></form>
 	<br /><hr /><form method=\"post\" action=\"produit?action=eff&id=" .  $leproduit->id_produit . "\"> <input type=\"submit\" value=\"supprimer\"> </form>";
 	
 ?>

@@ -50,8 +50,8 @@ unset($texto);
 $minimenu = "<div><ul class=\"menu\">";
 include('./minimenu.php');
 $minimenu .="<ul class=\"sousmenu\">
-			<li class=\"menu\" ><a class=\"menu\" href=\"./produit?action=add\" >Nouveau Produit</a> </li>
-			<li class=\"menu\" ><a class=\"menu\" href=\"./produit?action=manquantcommande\" >Commande de Produit</a></li>
+			<li class=\"menu\" ><a class=\"medium button green\"  href=\"./produit?action=add\" >Nouveau Produit</a> </li>
+			<li class=\"menu\" ><a class=\"medium button yellow\" href=\"./produit?action=manquantcommande\" >Commande de Produit</a></li>
 			</ul>
 			</div>
 				<br />";

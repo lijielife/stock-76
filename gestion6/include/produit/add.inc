@@ -57,7 +57,7 @@
 	</table>
 		</FIELDSET> 
 		<br />
-	<input type=\"submit\" name=\"submitbutton\" value=\"valider\" /><input type=\"button\" name=\"cancel\" value=\"annuler\" onclick=\"history.back()\" />
+	<input class=\"small button red\" type=\"button\" name=\"cancel\" value=\"annuler\" onclick=\"history.back()\" /><input class=\"small button blue\" type=\"submit\" name=\"submitbutton\" value=\"valider\" />
 	</form>";
 	
 ?>

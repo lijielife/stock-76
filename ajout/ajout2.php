@@ -70,11 +70,11 @@ $texto .= "
 <input type=\"hidden\" name=\"lestockinitial\" value=\"$produit->stock\">
 Commande de : $produit->quantite_commande<br />
 <p style=\"text-indent: 25px;\">
-<input style=\"font-size:25px\" type=\"button\" name=\"plus\" onClick=\"enplus();\" value=\"+\" id=\"leplus\">
+<input style=\"font-size:25px\" class=\"large button orange\" type=\"button\" name=\"plus\" onClick=\"enplus();\" value=\"+\" id=\"leplus\">
 <input class=\"actif\" style=\"font-size:25px;width:50px;text-indent:10px;\" type=\"text\" onblur=\"aumoins();\" name=\"ajoutstock\" value=\"$qt\" id=\"ajoutstock\">
-<input style=\"font-size:25px\" type=\"button\" name=\"moins\" onClick=\"enmoins();\" value=\"-\" id=\"lemoins\">
+<input style=\"font-size:25px\" class=\"large button orange\" type=\"button\" name=\"moins\" onClick=\"enmoins();\" value=\"-\" id=\"lemoins\">
 </p>
-<p><input type=\"submit\" name=\"submitretrait\" value=\"ajouter au stock\" id=\"submitretrait\"></p>
+<p><input class=\"large button orange\" type=\"submit\" name=\"submitretrait\" value=\"ajouter au stock\" id=\"submitretrait\"></p>
 </form>
 </div>\n";
 $texto .= "

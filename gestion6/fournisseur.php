@@ -18,7 +18,7 @@ unset($texto);
 $minimenu = "<div><ul class=\"menu\">";
 include('./minimenu.php');
 $minimenu .="<ul class=\"sousmenu\">
-			<li class=\"menu\" ><a class=\"menu\" href=\"./fournisseur?action=add\" >Nouveau Fournisseur</a></li>
+			<li class=\"menu\" ><a class=\"medium button green\" href=\"./fournisseur?action=add\" >Nouveau Fournisseur</a></li>
 			</ul>
 			</div><br />";
 

@@ -152,7 +152,7 @@ switch($laction){
 		<td> $produit->stock_mini</td>
 		<td>";
 		if ($produit->commande=="0"){
-		$texto .= "<input class=\"actif\" name=\"qtcommande\" size=\"4\" value=\"".(($produit->quantite_commande=="0")?"":"$produit->quantite_commande")."\" /></td>
+		$texto .= "<input class=\"actif\" name=\"qtcommande\" style=\"width:30px\" value=\"".(($produit->quantite_commande=="0")?"":"$produit->quantite_commande")."\" /></td>
 		<td><input name=\"action\" type=\"hidden\" value=\"commander\"><input name=\"lid\" type=\"hidden\" value=\"$produit->id_produit\">
 		 <input type=\"submit\" name=\"submitbutton\" value=\"A commander\" id=\"submitbutton\"></td>";
 		}
