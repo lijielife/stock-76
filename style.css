@@ -32,6 +32,10 @@ h1 {
 	margin-bottom:0px;
 }
 
+h3 {
+	color:#498BF4;
+}
+
 a:link{
 	color:#498BF4;
 	text-decoration:none;
@@ -283,7 +287,7 @@ a.catego:hover{
 	}
 
 th{
-		font: bold 11px Verdana, Arial, Helvetica,sans-serif;
+		font: bold 10px Verdana, Arial, Helvetica,sans-serif;
 		color: #6D929B;
 		border-right: 1px solid #C1DAD7;
 		border-bottom: 1px solid #C1DAD7;
@@ -394,7 +398,7 @@ tr.bientotstock {
 
 tr.unused {
 	background: #777;
-	color: #FFF;
+	color: #AAA;
 }
 
 tr.justchange {
@@ -464,5 +468,5 @@ td.dentcadran3{
 	border-right: 3px solid #000;	
 	}
 
-.lesdents{text-decoration:none;color:#eee;background-color:#FFF;border:2px solid #eee;}
+.lesdents, a.lesdents{text-decoration:none;color:#eee;background-color:#FFF;border:2px solid #eee;}
 td.lesdents{width:40px;}

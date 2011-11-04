@@ -43,7 +43,7 @@ $texto .= "<html xmlns=\"http://www.w3.org/1999/xhtml\"
 	    lang=\"fr\"
 	    dir=\"ltr\">
 <head>
-<script type=\"text/javascript\" language=\"javascript\" src=\"../jquery.3.js\" charset=\"utf-8\"></script>
+<script type=\"text/javascript\" language=\"javascript\" src=\"../$Jquery\" charset=\"utf-8\"></script>
 <script type=\"text/javascript\" language=\"javascript\" src=\"./js/jquery.qtip.min.js\" charset=\"utf-8\"></script>
 
 <meta content=\"text/html; Charset=UTF-8\" http-equiv=\"Content-Type\" />

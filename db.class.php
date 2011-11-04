@@ -107,6 +107,24 @@ class db
 			$this->__set('quelidee', $this->lastid);
 			}
 			
+	public function newsave($table, $lesvaleurs)
+			{
+			mysql_query("SET NAMES UTF8");
+			$this->watwat = "";
+			
+			reset($lesvaleurs);
+			
+			$col = implode(",",array_keys($lesvaleurs));
+			$val = implode(",",array_values($lesvaleurs));
+
+			$this->requete = "insert into $table ($col) VALUES($val)";
+			echo $this->requete;
+			$this->resultat = mysql_query($this->requete,$this->ide);
+			$this->lastid = mysql_insert_id();
+			$this->__set('quelidee', $this->lastid);
+			}	
+			
+			
 		public function delete($table, $id)
 				{
 				$this->requete = "DELETE FROM $table WHERE id_".$table."='". $id ."'";
