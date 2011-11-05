@@ -3,10 +3,11 @@ $cmd = $_POST['cmd'];
 require_once("../db.class.php");
 include("./include/stat/function.inc");
 include("../fonction.php");
+$texto ="";
 $reqcompare = new db();
 	$finfin = date("Y-m-d");
 
-	list($year, $month, $day) = split('[/.-]', $finfin);
+	list($year, $month, $day) = explode('-', $finfin);
 	$debdeb = $year-1 ."-".$month."-".$day;
 	
 	$lien= "";
@@ -37,14 +38,14 @@ $reqproduit ="SELECT *
 $nblignemax = 1;
 	$texto .= "<table cellspacing=\"0\">";
 
-$lignentete = new Entete("listingprod", $laction, "", "", "");
+$lignentete = new Entete("listingprod", "", "", "", "");
 $thete[1] =array("titre");
 $thete[2] =array("Categ");
 $thete[3] =array("Produit");
 $thete[4] =array("Fourn");
 $thete[5] =array("ref.");
 $thete[6] =array("condit.");
-$thete[7] =array("prix Un.");
+$thete[7] =array("prix Un.", "prix");
 $thete[8] =array("stock");
 $thete[9] =array("St_mini");
 $thete[10] =array("&#8364;");
@@ -56,7 +57,12 @@ $texto .=  "<tr>";
 $texto .= $lignentete->whatwhat;
 $texto .=  "</tr>";
 
-
+$total_prix_stock = 0;
+$total_stock = 0;
+$total_flux_n = 0;
+$total_flux_n1 = 0;
+$somme_prix_unit = 0;
+			
 while($produit = $reqcompare->row()){
 		$cololign = (($nblignemax%2 == 0)?"":"alt");
 		$req_statN = new db();
@@ -65,7 +71,7 @@ while($produit = $reqcompare->row()){
 		
 		$valN= number_format($statN->N * $produit->prix, 2, ',', '');
 		
-		list($Nyear, $Nmonth, $Nday) = split('[/.-]', $datedebut);
+		list($Nyear, $Nmonth, $Nday) = explode('-', $datedebut);
 		$debutn1 = $Nyear-1 ."-".$Nmonth."-".$Nday;
 		$req_statN1 = new db();
 		$req_statN1->findquery("SELECT sum(quantite) as N1 FROM flux WHERE flux.id_produit = $produit->id_produit AND quantite < 0 AND flux.date >=  '$debutn1' AND flux.date <=  '$datedebut'");

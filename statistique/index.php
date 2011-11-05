@@ -1,8 +1,8 @@
 ﻿<?php
-
 require_once("../db.class.php");
 include("./include/stat/function.inc");
 include("../fonction.php");
+$texto ="";
 $date = date("d/m/Y");
 $laction=(isset($_GET['action']))?$_GET['action']:"";
 $dadate = strftime("%A %d %B %Y");
@@ -42,19 +42,37 @@ $(document).ready(function(){
 });	
 </script>
 ";
-
+//$(":checkbox", this).trigger("click");
 $body_script .= '<style>
 	#selectableau tr.selected {background: #66B014; color: white;}
 		</style>
 	<script>
 	$(document).ready(function() {
+	$("#effacercompare").hide();
+	$("input[name=\'cmd[]\']").click(function(event) {
+		$(this).parents("#selectableau tr").toggleClass("selected");
 		
-
+		var datedebut = $("input[name=debut]").val();
+		var datefin = $("input[name=fin]").val();
+		var leslignes = $("input[name=\'cmd[]\']:checked")
+						.map(function() { return $(this).val() })
+                       .get()
+                       .join(",");
+  	$(\'#comparebox\').load("compare.php", { cmd: leslignes, debut: datedebut, fin: datefin}); 
+	});
 
   $("#selectableau tr").click(function(event) {
+	$("#effacercompare").show();
     if (event.target.type !== "checkbox") {
 		$(this).toggleClass("selected");
-      	$(":checkbox", this).trigger("click");
+		
+		if($(":checkbox", this).is(":checked")){
+			$(":checkbox", this).attr("checked", false);
+		}
+		else{
+			$(":checkbox", this).attr("checked", true);
+		}
+
 		var datedebut = $("input[name=debut]").val();
 		var datefin = $("input[name=fin]").val();
 		var leslignes = $("input[name=\'cmd[]\']:checked")
@@ -68,6 +86,7 @@ $body_script .= '<style>
 		$("#comparebox").empty();
 		$("#stat input[name=\'cmd[]\']").attr(\'checked\', false);
 		$("#selectableau tr").removeClass("selected");
+		$("#effacercompare").hide();
 	});
 
 });
@@ -77,25 +96,28 @@ $body_script .= '<style>
 include('../menu.php');
 $menu = $texto;
 unset($texto);
-
+$texto ="";
 //verifie si date debut-fin particuliere sinon 1 an a partir aujourd'hui
 	$finfin = date("Y-m-d");
 
-	list($year, $month, $day) = split('[/.-]', $finfin);
+	list($year, $month, $day) = explode('-', $finfin);
 	$debdeb = $year-1 ."-".$month."-".$day;
 	
 	$lien= "";
-if($_GET['debut']!=""){
-	$datedebut =  $_GET['debut'];
-	$lien .= "&debut=" . $_GET['debut'];
+	$get_debut = (isset($_GET['debut']))?$_GET['debut']:"";
+	$get_fin = (isset($_GET['fin']))?$_GET['fin']:"";
+
+if($get_debut!=""){
+	$datedebut =  $get_debut;
+	$lien .= "&debut=" . $get_debut;
 	}
 else{
 	$datedebut =  $debdeb;
 }
 
-if($_GET['fin']!=""){
-	$datefin = $_GET['fin'];
-	$lien .= "&fin=" . $_GET['fin'];
+if($get_fin!=""){
+	$datefin = $get_fin;
+	$lien .= "&fin=" . $get_fin;
 	}
 else{
 	$datefin = $finfin;
@@ -116,7 +138,7 @@ $texto .="<ul class=\"sousmenu\">
 			</div>";
 
 $texto .= '<div class="demo">
-<a class="medium button red" id="effacercompare">effacer comparasion</a>
+<a class="medium button red" id="effacercompare">effacer comparaison</a>
 <p id="comparebox">
 </p>
 </div>
@@ -154,28 +176,6 @@ switch($laction){
 	default;
 		$rajout = "tous";
 		include("./include/stat/default.inc");
-	break;
-}
-
-
-switch($mess){
-	case "newprod";
-	$body_mess = message("warning", "Nouveau stat enregistr&eacute;");
-	break;
-	case "changeprod";
-	$body_mess = message("warning", "stat modifi&eacute;");
-	break;
-	case "effaceprod";
-	$body_mess = "<div><span class=\"box warning corners\">stat supprim&eacute;</span</div>";
-	break;
-	case "commandeprod";
-	$body_mess = "<div><span class=\"box warning corners\">stat command&eacute;</span</div>";
-	break;
-	case "recuprod";
-	$body_mess = "<div><span class=\"box warning corners\">stat re&ccedil;u</span</div>";
-	break;
-	default;
-	$body_mess = "";
 	break;
 }
 

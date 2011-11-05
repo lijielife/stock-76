@@ -1,6 +1,6 @@
 <?php
 
-$lignentete = new Entete("listingprod", $laction, $_GET['ordre'], $lesens, $rajout_class);
+$lignentete = new Entete("listingprod", $laction, $_GET['ordre'], $lesens, "");
 $thete[1] =array("");
 $thete[2] =array("titre", "id_titre");
 $thete[3] =array("Categ", "categ");

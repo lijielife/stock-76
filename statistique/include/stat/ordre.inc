@@ -1,4 +1,6 @@
 <?php
+	$_GET['sens'] = (isset($_GET['sens']))?$_GET['sens']:"";
+	$_GET['ordre'] = (isset($_GET['ordre']))?$_GET['ordre']:"";
 
 switch ( $_GET['sens'] )
 {

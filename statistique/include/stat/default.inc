@@ -6,13 +6,13 @@
 
 	
 	//si demande d'une categ specifique, fournisseur ou recherche
-	if($_GET['categ']){
+	if(isset($_GET['categ'])){
 		$cat = mysql_real_escape_string($_GET['categ']);
 		$rajout_requete = "AND categ.id_categ=$cat ";
 		$rajout_class = "&categ=$cat";
 	}
 	
-	if($_GET['fournini']){
+	if(isset($_GET['fournini'])){
 		$fournis = mysql_real_escape_string($_GET['fournini']);
 		$rajout_requete = "AND fournisseur.id_fournisseur=$fournis ";
 		$rajout_class = "&fournini=$fournis";
@@ -79,7 +79,7 @@
 		
 		$valN= number_format($statN->N * $produit->prix, 2, ',', '');
 		
-		list($Nyear, $Nmonth, $Nday) = split('[/.-]', $datedebut);
+		list($Nyear, $Nmonth, $Nday) = explode('-', $datedebut);
 		$debutn1 = $Nyear-1 ."-".$Nmonth."-".$Nday;
 		$req_statN1 = new db();
 		$req_statN1->findquery("SELECT sum(quantite) as N1 FROM flux WHERE flux.id_produit = $produit->id_produit AND quantite < 0 AND flux.date >=  '$debutn1' AND flux.date <=  '$datedebut'");
@@ -93,7 +93,7 @@
 		list ($year, $month, $day) = explode ("-", $produit->date_commande);
 		$datecom = (($produit->date_commande=="0000-00-00")?"":"$day/$month/$year");
 		$texto .= "<tr name=\"$produit->id_produit\" class=\"$cololign\" align='center'>
-		<td><input type=\"checkbox\" readable name=\"cmd[]\" value=\"$produit->id_produit\"/></td>
+		<td><input type=\"checkbox\" name=\"cmd[]\" value=\"$produit->id_produit\"/></td>
 		<td> $produit->titre</td>
 		<td> $produit->categ</td>
 		<td> $produit->produit</td>
