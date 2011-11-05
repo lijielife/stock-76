@@ -15,7 +15,7 @@ $reqpre = new db();
 		$cololign = (($nblignemax%2 == 0)?"":"class=\"alt\"");
 		$texto .= "<tr $cololign>
 			<td>$categ->id_categ</td>
-			<td><a href='produit?categ=" .  $categ->id_categ . "'> $categ->categ</a></td>
+			<td><a href='index?categ=" .  $categ->id_categ . "'> $categ->categ</a></td>
 			<td> $categ->titre</td>
 			<td align='center'><a href='categorie?action=modif&id=" .  $categ->id_categ . "'><img border='0' src='../img/pencil.gif' alt='modif'></a></td>
 			<td align='center'><a href='categorie?action=eff&id=" .  $categ->id_categ . "'><img border='0' src='../img/erase.png' alt='efface'></a></td>
