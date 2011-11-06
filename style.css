@@ -359,6 +359,17 @@ tr {
 	color: #5C5C5C;
 	
 }
+
+#selectableau tr {
+	cursor:  pointer;
+}
+
+#selectableau tr:active {
+	background-color:  #6B3ADF;
+	color: #FFF;
+}
+
+
 td{
 	height:30px;
 	border-bottom: 0px solid #C1DAD7;

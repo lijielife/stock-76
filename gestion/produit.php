@@ -10,7 +10,13 @@ $head_script ="<script type=\"text/javascript\" language=\"javascript\" src=\"..
 $head_css ="<link rel=\"stylesheet\" href=\"../style.css\" type=\"text/css\" media=\"screen\" />\n";
 $body_script = "
 <script type=\"text/javascript\" charset=\"utf-8\">
-$(document).ready(function(){			
+$(document).ready(function(){
+	
+	$('#selectableau tr').dblclick(function() {
+		goTO = 'produit?action=modif&id=' + this.id;
+	window.location = goTO;
+	});
+				
 	$(\"#txt_search\").keyup(function()
 	{
 		var search;
