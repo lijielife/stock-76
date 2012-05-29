@@ -10,8 +10,10 @@ $texto = "
 $(document).ready(function(){
 	
 	$('#selectableau tr').dblclick(function() {
+		if(this.id != 'nodbclick'){
 		goTO = 'produit?action=modif&id=' + this.id;
 	window.location = goTO;
+		}
 	});
 				
 });	
@@ -77,7 +79,7 @@ if(($reqpre->__get('numrows'))!=0){
 			$cololign = "class=\"justchange\"";
 	   	}
     }
-		if($produit->used=="0" && $usedaff==0){$texto .= "<tr class=\"stock\" align='center'>
+		if($produit->used=="0" && $usedaff==0){$texto .= "<tr class=\"stock\" align='center' id='nodbclick'>
 		<td  colspan=\"14\"> --------- produit non utilise ---------	</td></tr>"; $usedaff = 1;}
 		
 		$tot = floatval($produit->stock) * floatval($produit->prix);
@@ -105,7 +107,7 @@ if(($reqpre->__get('numrows'))!=0){
 	}
 	
 
-	$texto .= "<tr><td colspan=14><center>Total en stock:  <b>".number_format($total, 2, ',', '')." &#8364;</b></center></td></tr>";
+	$texto .= "<tr id='nodbclick'><td colspan=14><center>Total en stock:  <b>".number_format($total, 2, ',', '')." &#8364;</b></center></td></tr>";
 	
 	
 	

@@ -22,7 +22,6 @@ Gestion Stock en ligne: categorie: 	<?php echo $rajout; ?>
 
 
 <div style="padding:8px">
-<h1>Gestion Categorie: 	<?php echo $rajout; ?> </h1>
 
 <?php echo $body_mess; ?>
 <?php echo $minimenu; ?>

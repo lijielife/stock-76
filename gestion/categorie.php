@@ -15,6 +15,7 @@ unset($texto);
 
 
 $minimenu = "<div>";
+$lapage = "categorie";
 include('./minimenu.php');
 $minimenu .="<ul class=\"sousmenu\">
 			<li class=\"menu\" ><a class=\"medium button green\" href=\"./categorie?action=add\" >Nouvelle categorie</a></li>

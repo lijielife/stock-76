@@ -13,8 +13,10 @@ $body_script = "
 $(document).ready(function(){
 	
 	$('#selectableau tr').dblclick(function() {
+		if(this.id != 'nodbclick'){
 		goTO = 'produit?action=modif&id=' + this.id;
 	window.location = goTO;
+		}
 	});
 				
 	$(\"#txt_search\").keyup(function()
@@ -54,6 +56,7 @@ unset($texto);
 
 
 $minimenu = "<div>";
+$lapage = "produit";
 include('./minimenu.php');
 $minimenu .="<ul class=\"sousmenu\">
 			<li class=\"menu\" ><a class=\"medium button green\"  href=\"./produit?action=add\" >Nouveau Produit</a> </li>
@@ -92,7 +95,7 @@ switch($laction){
 		include("./include/produit/manquantcommande.inc");
 	break;
 	default;
-		$rajout = "tous";
+		$rajout = "";
 		include("./include/produit/default.inc");
 	break;
 }

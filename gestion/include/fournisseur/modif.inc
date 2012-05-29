@@ -1,7 +1,7 @@
 <?php
 
 $texto .="<h3>Modification d'un fournisseur</h3>";
-	$texto .=  "<div><span class=\"box warning corners\">Attention vous allez modifier un fournisseur, les produits y appartenant changeront de fournisseur</span</div>";
+	$texto .=  "<div><span class=\"box warning corners\">Attention vous allez modifier un fournisseur, les produits y appartenant changeront de fournisseur</span></div>";
 	$req = new db();
 	if($_GET['id']!=0){
 	$req->findone('fournisseur', $_GET['id']);

@@ -190,6 +190,10 @@ ul.retrait, li.retrait { display: block; list-style-type: none;color:#333 }
 	background-color:#FAFAFA;
 	
 }
+a.activ{ color:#FF5555;
+		border:1px solid #FF9898;
+		background-color:#fFf5f5;}
+
 
 /*=============================================boutons===========================================*/
 .button, .button:visited, a.button  {
@@ -413,9 +417,8 @@ tr.unused {
 }
 
 tr.justchange {
-	background: #FFFF33;
-	color: #222222;
-
+	background: #FFFF00;
+	color: #111111;
 }
 
 tr:hover {

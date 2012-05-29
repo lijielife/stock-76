@@ -21,11 +21,11 @@ switch ($_GET['ordre']) {
 	case 'categ':
 		$ordreby =", categ.".$_GET['ordre'].$sens;
 		break;
-	case 'id_titre':
-		$ordreby =", categ.".$_GET['ordre'].$sens;
+	case 'titre':
+		$ordreby =", titre.".$_GET['ordre'].$sens;
 	break;
-	case 'id_fourn':
-		$ordreby =", produit."."id_fournisseur".$sens;
+	case 'fournisseur':
+		$ordreby =", fournisseur."."fournisseur".$sens;
 	break;
 	case 'produit':
 		$ordreby =", produit.".$_GET['ordre'].$sens;

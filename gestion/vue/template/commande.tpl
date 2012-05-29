@@ -11,7 +11,7 @@
 <?php echo $head_css; ?>
 
 <title>
-Gestion Stock en ligne: Titre: 	<?php echo $rajout; ?> 
+Gestion Stock en ligne: Commande: 	<?php echo $rajout; ?> 
 
 </title>
 </head>

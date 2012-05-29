@@ -27,6 +27,12 @@
 	foreach ($_GET as $key => $value) {
 		$allGET .= "&$key=$value";
 	}
+	
+	$allGETsansid = "";
+	foreach ($_GET as $key => $value) {
+		if($key!="id"){
+		$allGET .= "&$key=$value";}
+	}
 	$requete_modifiable ="SELECT * 
 	FROM produit, titre, categ, fournisseur
 	WHERE categ.id_categ = produit.id_categ
@@ -43,7 +49,7 @@
 	</form><form action=\"./produit?action=commander\" method=\"post\"><span id=\"suggest\">
 	";
 	if(isset($_GET['search'])){
-		$texto.= "<div><span class=\"box info corners\">recherche pour : <b>$que</b>&nbsp;&nbsp;</b></span</div>";
+		$texto.= "<div><span class=\"box info corners\">recherche pour : <b>$que</b>&nbsp;&nbsp;</b></span></div>";
 		}
 		$texto.="<table id=\"selectableau\" cellspacing=\"0\" >
 	\n";
@@ -65,17 +71,17 @@
 			$cololign = "class=\"justchange\"";
 	   	}
     }
-		if($produit->used=="0" && $usedaff==0){$texto .= "<tr class=\"stock\" align='center'>
-		<td  colspan=\"14\"> --------- produit non utilise ---------	</td></tr>"; $usedaff = 1;}
+		if($produit->used=="0" && $usedaff==0){$texto .= "<tr class=\"stock\" align='center' id='nodbclick'>
+		<td colspan=\"14\"> --------- produit non utilise ---------	</td></tr>"; $usedaff = 1;}
 		
 		$tot = floatval($produit->stock) * floatval($produit->prix);
 		$totaligne = number_format($tot, 2, ',', '');
 		list ($year, $month, $day) = explode ("-", $produit->date_commande);
 		$datecom = (($produit->date_commande=="0000-00-00")?"":"$day/$month/$year");
-		$texto .= "<tr $cololign align='center' title='Double click pour modifier' id=\"".$produit->id_produit . $allGET."\">
+		$texto .= "<tr $cololign align='center' title='Double click pour modifier' id=\"".$produit->id_produit . $allGETsansid."\">
 		<td> $produit->titre</td>
 		<td> $produit->categ</td>
-		<td> $produit->produit</td>
+		<td id=\"prod_".$produit->id_produit."\"> $produit->produit</td>
 		<td> $produit->fournisseur</td>
 		<td> $produit->reference</td>
 		<td> $produit->conditionnement</td>
@@ -93,7 +99,7 @@
 	}
 	
 
-	$texto .= "<tr><td colspan=14><center>Total en stock:  <b>".number_format($total, 2, ',', '')." &#8364;</b></center></td></tr>";
+	$texto .= "<tr id='nodbclick'><td colspan=14><center>Total en stock:  <b>".number_format($total, 2, ',', '')." &#8364;</b></center></td></tr>";
 	
 	
 	

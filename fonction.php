@@ -1,7 +1,7 @@
 <?php
 
 function message($type, $text){
-	$mess= "<div><span class=\"box $type corners\">$text</span</div>";
+	$mess= "<div><span class=\"box $type corners\">$text</span></div>";
 	return $mess;
 }
 

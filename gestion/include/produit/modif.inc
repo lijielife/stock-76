@@ -68,7 +68,7 @@ $texto .="<h3>Modification de Produit</h3>";
 		
 	}
 
-	$texto .="<form method=\"post\" name='modification' action=\"./produit?action=save".$allGET."\" accept-charset=\"utf-8\">
+	$texto .="<form method=\"post\" name='modification' action=\"./produit?action=save".$allGET. "#prod_". $leproduit->id_produit ."\" accept-charset=\"utf-8\">
 		<FIELDSET align=\"left\"> 
 		    <LEGEND>Infos produits</LEGEND>
 		<table>

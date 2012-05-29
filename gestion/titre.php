@@ -15,6 +15,7 @@ unset($texto);
 
 
 $minimenu = "<div>";
+$lapage = "titre";
 include('./minimenu.php');
 $minimenu .="<ul class=\"sousmenu\">
 			<li class=\"menu\" ><a class=\"medium button green\" href=\"./titre?action=add\" >Nouveau titre</a></li>
