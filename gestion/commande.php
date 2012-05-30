@@ -40,6 +40,10 @@ switch($laction){
 		include("./include/commande/save.inc");
 		include("./include/commande/default.inc");
 	break;
+	case "cmdprint";
+		include("./include/commande/save.inc");
+		include("./include/commande/cmdprint.inc");
+	break;
 	default;
 		$rajout = "tous";
 		include("./include/commande/default.inc");

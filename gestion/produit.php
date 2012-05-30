@@ -87,7 +87,7 @@ switch($laction){
 		include("./include/produit/default.inc");
 	break;
 	case "commander";
-		$rajout = "classement";
+		$rajout = "commande";
 		include("./include/produit/commander.inc");
 	break;
 	case "manquantcommande";

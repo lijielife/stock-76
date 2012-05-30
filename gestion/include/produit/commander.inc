@@ -2,7 +2,7 @@
 
 	$texto .="<h3>Commande de produit</h3>";
 	$req = new db();
-	$texto .="<form method=\"post\" action=\"./commanderimprimer\">";
+	$texto .="<form method=\"post\" action=\"./commande?action=cmdprint\">";
 	$texto .= "<table cellspacing=\"0\" >
 	<tr>
 	<th class=\"listingprod\">Titre</th>
@@ -39,7 +39,7 @@
 		if(($produit->used=="1") && ($produit->commande=="1")){
 				$cololign = "class=\"bientotstock\"";
 			}
-    }
+    
 		if($produit->stock_mini > $produit->stock){$necessaire=$produit->stock_mini-$produit->stock;}
 		else{$necessaire="0";}
 		$texto .= "<tr $cololign align='center'>

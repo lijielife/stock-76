@@ -3,7 +3,7 @@ $hosting = "http://" . $_SERVER['HTTP_HOST'];
 
 
 // <li><a href=\"$hosting/stock/statistique/\">statistique</a></li>
-$texto .="<div id=\"subnavigationwrap\">
+$texto .="<div id=\"subnavigationwrap\" class=\"backgroundpaper\">
 	<div id=\"subnavigation\">
 	<span style=\"padding:5px;float:right;position:absolute;right:0px; width:250px\">".htmlentities($dadate)." </span>\n
 
