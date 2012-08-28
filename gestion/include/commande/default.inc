@@ -24,13 +24,7 @@ $texto .="
 //$lid=(isset($_GET['id']))?$_GET['id']:"";
 //$action=(isset($_POST['action']))?$_POST['action']:"";
 switch ($action) {
-	case 'search':
-		include('resultat2.inc');
-		break;
-	case 'retraitcodabar':
-		include('codabar.inc');
-		break;
-	default:
+		default:
 		if($mess!=""){
 			switch ($mess) {
 				case 'retrait':
@@ -70,7 +64,7 @@ switch ($action) {
 			
 		}
 		else{
-			$texto .= "<span class=\"affichage\">en attente de recherche...</span>";
+			$texto .= "<span class=\"affichage\">Cliquer sur une commande pour l'afficher ici...</span>";
 		}
 		break;
 }
@@ -83,7 +77,7 @@ $texto .= "</div>
 
 $reqpre = new db();
 $say = $reqpre->findquery("SELECT * FROM  `commande`, `fournisseur` WHERE commande.id_fournisseur=fournisseur.id_fournisseur ORDER BY date DESC");
-$texto.= "<table style=\"float:left;\" cellspacing=\"0\" class=\"listing\"><tr><th class=\"listingtitre\">date</th><th class=\"listingtitre\">fourn</th><th class=\"listingtitre\">Facture</th><th class=\"listingtitre\">note</th><th class=\"listingtitre\">recu</th><th class=\"listingtitre\"><img border='0' src='../img/pencil.gif' alt='modif'></th><th class=\"listingtitre\"><img border='0' src='../img/erase.png' alt='efface'></th></tr>\n";
+$texto.= "<table id=\"listingcommande\" style=\"float:left;\" cellspacing=\"0\" class=\"listing\"><tr><th class=\"listingtitre\">date</th><th class=\"listingtitre\">fourn</th><th class=\"listingtitre\">Facture</th><th class=\"listingtitre\">note</th><th class=\"listingtitre\"><img border='0' src='../img/pencil.gif' alt='modif'></th><th class=\"listingtitre\"><img border='0' src='../img/erase.png' alt='efface'></th></tr>\n";
 $nblignemax = 1;
 $monthaff="00";
 $yearaff="00";
@@ -92,19 +86,20 @@ $cololign = (($nblignemax%2 == 0)?"":"class=\"alt\"");
 list ($year, $month, $day) = explode ("-", $commande->date);
 $datecom = (($commande->date=="0000-00-00")?"":"$day/$month/$year");
 if($year!=$yearaff){$texto .= "<tr class=\"stock\" align='center' id='nodbclick'>
-<td colspan=\"7\"> --------- $year ---------	</td></tr>";}
-if($year!=$yearaff && $month!=$monthaff){ $lemonth = strtoUpper(strftime("%B", mktime(0, 0, 0, $month, 1, $year)));
-	$texto .= "<tr class=\"stock\" align='center' id='nodbclick'>
-<td colspan=\"7\"> --------- $lemonth ---------	</td></tr>";}
+<td colspan=\"6\"> --------- $year ---------	</td></tr>";}
+if(($year!=$yearaff && $month==$monthaff) OR ($month!=$monthaff)){ $lemonth = strtoUpper(strftime("%B", mktime(0, 0, 0, $month, 1, $year)));
+	$texto .= "<tr class=\"stock\" id='nodbclick'>
+<td colspan=\"6\"  style='text-align: center;'> --------- $lemonth ---------	</td></tr>";}
 $note_abrege = substr($commande->note, 0, 30);
 
-$texto .= "<tr $cololign>
+$modifmodal = '<a class="thickbox" href="./modifcommande?lid='.$commande->id_commande.'&height=350&width=550&kase=commande" title="Commande du '.$datecom.' chez '. $commande->fournisseur.'">';
+
+$texto .= "<tr $cololign id=\"tr_$commande->id_commande\">
 <td><a class=\"commando\" id=\"$commande->id_commande\" href='#'> $datecom</a></td>
 <td align='center'><a class=\"commando\" id=\"$commande->id_commande\" href='#'> $commande->fournisseur</a></td>
 <td align='center'><a class=\"commando\" id=\"$commande->id_commande\" href='#'> $commande->num_facture</a></td>
 <td align='center'><a class=\"thickbox\" href=\"./include/commande/popnote?id=$commande->id_commande&height=200&width=300\">$note_abrege...</a></td>
-<td align='center'> $commande->recu</td>
-<td align='center'><a href='commande?action=modif&id=" .  $commande->id_commande . "'><img border='0' src='../img/pencil.gif' alt='modif'></a></td>
+<td align='center'>$modifmodal<img border='0' src='../img/pencil.gif' alt='modif'></a></td>
 <td align='center'><a href='commande?action=eff&id=" .  $commande->id_commande . "'><img border='0' src='../img/erase.png' alt='efface'></a></td>
 </tr>\n";
 $nblignemax++;

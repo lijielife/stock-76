@@ -1,0 +1,45 @@
+
+</script>   <form action ="commande_save?" name="formmodifcommande" id="formmodifcommande" method="POST" accept-charset="utf-8" style="width: 450px">
+    <fieldset style="width: 500px;margin-left:5px;">
+<legend >Commande</legend>
+<input id="id_commande" name="id_commande" type="hidden" value="1">
+<input id="action" name="action" type="hidden" value="modcommande">
+<label for="date" >Date de commande </label><input class="actif" id="mdate" name="date" size="20" type="text" value="29/05/2012"><br />
+<label for="fourn" > Fournisseur </label><select class="actif" name="fournisseur">
+<option value="0">--choisir un fournisseur--</option>
+<option value="17">3M</option>
+<option value="4">american orthodontic</option>
+<option value="30">ARSEUS TEC</option>
+<option value="5">BISICO</option>
+<option value="24">EVIDENT</option>
+<option value="29">FADICLASS</option>
+<option value="31">FORESTADENT</option>
+<option value="20">GAC</option>
+<option value="1">GACD</option>
+<option value="14">GSM</option>
+<option value="26">GUM</option>
+<option value="25">Highland Metals</option>
+<option value="28">JPG</option>
+<option value="23">KOMET</option>
+<option value="32">NEOHM</option>
+<option value="6">New Ortho</option>
+<option value="27">ODONTEC</option>
+<option value="13">Oral B</option>
+<option SELECTED value="2">Ormodent</option>
+<option value="22">Ortho Company</option>
+<option value="7">Ortho Force</option>
+<option value="8">Ortho Organizers</option>
+<option value="11">Ortho Plus</option>
+<option value="9">Ortho Technology</option>
+<option value="10">RMO</option>
+<option value="3">Schein</option>
+<option value="12">Septodont</option>
+<option value="33">SIRONA</option>
+<option value="15">W&H</option>
+</select><br />
+<label for="facture" > N&deg; facture </label><input class="actif" id="facture" name="facture" size="15" type="text" value="334"><br />
+<label for="note" > Note </label><textarea class="actif" id="mnote" name="note" rows="5">balbla</textarea><br />
+</fieldset>
+<p><label for="save" >&nbsp;</label><input style="width: 150px" name="msave" id="save" type="submit" value="enregistrer"></p>
+<br />
+<input style="float:right" type="button" value="annuler" onclick="tb_remove();">

@@ -48,6 +48,41 @@ $(document).ready(function(){
 	});
 });	
 </script>";
+$body_script .= '<style>
+	#selectableau tr.selected {background: #66B014; color: white;}
+		</style>
+	<script>
+	$(document).ready(function() {
+	$("input[name=\'cmd[]\']").click(function(event) {
+		$(this).parents("#selectableau tr").toggleClass("selected");
+
+		var leslignes = $("input[name=\'cmd[]\']:checked")
+						.map(function() { return $(this).val() })
+                       .get()
+                       .join(",");
+ 
+	});
+
+  $("#selectableau tr").click(function(event) {
+    if (event.target.type !== "checkbox") {
+		$(this).toggleClass("selected");
+		
+		if($(":checkbox", this).is(":checked")){
+			$(":checkbox", this).attr("checked", false);
+		}
+		else{
+			$(":checkbox", this).attr("checked", true);
+		}
+
+		var leslignes = $("input[name=\'cmd[]\']:checked")
+						.map(function() { return $(this).val() })
+                       .get()
+                       .join(",");
+    }
+  });
+
+});
+	</script>';
 
 include('../menu.php');
 $menu = $texto;
@@ -89,6 +124,10 @@ switch($laction){
 	case "commander";
 		$rajout = "commande";
 		include("./include/produit/commander.inc");
+	break;
+	case "cmdprint";
+		$rajout = "cmdprint";
+		include("./include/produit/cmdprint.inc");
 	break;
 	case "manquantcommande";
 	$rajout = "commande de manquant";

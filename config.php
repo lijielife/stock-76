@@ -15,6 +15,10 @@ $table_fournisseur = "fournisseur";
 $table_categ = "categ";
 $table_flux = "flux";
 $table_titre = "titre";
+$table_commande = "commande";
+$table_commande_list = "commande_list";
+
+
 $table_prescription = "prescription";
 $table_torque = "torque";
 $table_torq_categ = "torq_categ";

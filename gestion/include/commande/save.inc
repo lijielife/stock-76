@@ -43,6 +43,20 @@ switch($_POST['action']){
 	$mess ="newprod";
 	$page = "produit";
 	break;
+	case "modcommande";
+	echo "coucou";
+	$INSERT['id_commande']= '"' .$_POST['id_commande'] . '"';
+	$INSERT['date']= '"' .$_POST['date'] . '"';
+	$INSERT['note']= '"' .$_POST['note'] . '"';
+	$INSERT['num_facture']= '"' .$_POST['facture'] . '"';
+	$INSERT['id_fournisseur']= '"' .$_POST['id_fournisseur'] . '"';
+
+	$ret->update($table_commande, '"' . $INSERT['id_commande'] . '"', 'date="' . $_POST['date'] . '"',  'note="' . $_POST['note'] . '"', 'num_facture="' . $_POST['facture'] . '"',  'id_fournisseur="' . $_POST['fournisseur'] . '"');	
+
+	
+	$mess ="newprod";
+	$page = "produit";
+	break;
 	case "modprod";
 	$_POST['stock'] = (($_POST['stock']<0)?"0":$_POST['stock']);
 	$montant1 = split('[.,]', $_POST['prix']);

@@ -22,7 +22,6 @@ Gestion Stock en ligne: Produit: 	<?php echo $rajout; ?>
 
 
 <div style="padding:8px">
-<!-- <h1>Gestion Produit: 	<?php echo $rajout; ?> </h1> -->
 
 <?php echo $body_mess; ?>
 <?php echo $minimenu; ?>

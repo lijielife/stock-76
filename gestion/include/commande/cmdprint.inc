@@ -1,46 +1,37 @@
 <?php
-require("../config.php");
-require_once("../db.class.php");
-$ret = new db();
-$texto="";
 
-foreach ($_POST['cmd'] as $value) {
-    $ladate = date("Y-m-d");
-	if($_POST["qtcommande_".$value] > 0){
-	$ret->update('produit', '"' . $value . '"', 'commande="1"', 'quantite_commande=quantite_commande+"'. $_POST["qtcommande_".$value] .'"', 'date_commande="'. $ladate .'"');
-	}
-}
-$date = date("d/m/Y");
-setlocale(LC_TIME, "fr_FR");
-$dadate = strftime("%A %d %B %Y");
-$texto = "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\"
-	\"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">";
-$texto .= "<html xmlns=\"http://www.w3.org/1777/xhtml\"
-	    xml:lang=\"fr\"
-	    lang=\"fr\"
-	    dir=\"ltr\">
-<head>
-
-
-<link rel=\"stylesheet\" href=\"../style.css\" type=\"text/css\" media=\"screen\" />
-<link rel=\"stylesheet\" href=\"../styleprint.css\" type=\"text/css\" media=\"print\" />
-<meta content=\"text/html; Charset=UTF-8\" http-equiv=\"Content-Type\" />
-
-
-<title>
-Gestion Stock en ligne: Commande &agrave; faire
-</title>
-</head>
-<body OnLoad=\"javascript:window.print()\">";
-$texto .= "<span class=\"discret\">";
-include('../menu.php');
-$texto .= "</span>";
-$texto .="<h1>Gestion Produit: Commande &agrave; faire</h1>
-<h3>&nbsp;&nbsp;$dadate </h3>\n";
-
-
-	$texto .="&nbsp;&nbsp;<A class=\"discret\" href=\"javascript:window.print()\">Imprimer la liste</A><br /><br />";
+	$texto .="<h3 class=\"discret\">Commande de produit</h3>";
 	$req = new db();
+	$req_com = new db();
+	$req_com_list = new db();
+	$ret = new db();
+	$texto .="&nbsp;&nbsp;<A class=\"discret\" href=\"javascript:window.print()\">Imprimer la liste</A><br /><br />";
+	$texto .= "<span style=\"page-break-before:always\" >&nbsp;&nbsp; </span>\n";
+	//creer un liste dans la table commande en fonction des fournisseurs
+	$date = date("Y-m-d");
+	setlocale(LC_TIME, "fr_FR");
+	$dadate = strftime("%A %d %B %Y");
+	
+	// foreach ($_POST['cmd'] as $value) {
+	// if($_POST["qtcommande_".$value] > 0){$idacommander .= "$value, ";}
+	// 		}
+	// $newtaille =strlen($idacommander)-2; //supprime la derniere virgule et l'espace
+	// $idacommander = substr($idacommander, 0, $newtaille);
+	// SELECT fournisseur.fournisseur, fournisseur.id_fournisseur FROM produit, fournisseur WHERE produit.id_produit IN ($idacommander) AND produit.id_fournisseur = fournisseur.id_fournisseur GROUP BY id_fournisseur
+	// $req->findquery("SELECT fournisseur.fournisseur, fournisseur.id_fournisseur 
+	// FROM produit, fournisseur 
+	// WHERE produit.id_produit IN ($idacommander) 
+	// AND produit.id_fournisseur = fournisseur.id_fournisseur 
+	// GROUP BY id_fournisseur");
+	// 	
+	// 	while($produit = $req->row()){
+	// 	
+	// $req->save('commande', "''",  '"' . $date . '"', "''", "''", "''");
+	// $id_commande = $req->lastid;
+	// 	
+	//insert chaque produit dans  la table commande_list avec id_commande précédent
+	
+
 	foreach ($_POST['cmd'] as $value) {
 	if($_POST["qtcommande_".$value] > 0){$idacommander .= "$value, ";}
 			}
@@ -51,10 +42,11 @@ $texto .="<h1>Gestion Produit: Commande &agrave; faire</h1>
 	WHERE produit.id_produit IN ($idacommander) AND categ.id_categ = produit.id_categ
 	AND categ.id_titre = titre.id_titre
 	AND produit.id_fournisseur = fournisseur.id_fournisseur
-	ORDER BY fournisseur.fournisseur ASC");
-	$texto.= "<table>\n";
+	ORDER BY fournisseur.fournisseur, produit.id_produit  ASC");
+	$texto .= "<h3>&nbsp;&nbsp;$dadate </h3>\n";
 	$nblignemax = 1;
-	$fournid="abc";
+	$fournid="abcbibi";
+	$id_commande = "";
 
 	while($produit = $req->row()){
 		
@@ -66,11 +58,22 @@ $texto .="<h1>Gestion Produit: Commande &agrave; faire</h1>
 			$cololign = "class=\"bientotstock\"";
 		}
 		
+		
+		
 			if($fournid!=$produit->id_fournisseur){
+					//creer une insert dans la table commande pour le fournisseur en cours
+					
+				$req_com->save($table_commande, "''",  '"' . $date . '"', "''", "''", '"' . $produit->id_fournisseur .'"');
+ 				$id_commande = $req_com->lastid;  //recupere l'id_commande de save pour les insertion dans commande_list
+				
 				$texto .= "</table>";
-				if($fournid!="abc"){
-        $texto .= "<h3 style=\"page-break-before:always\" >&nbsp;&nbsp;$dadate </h3>\n";}
-        else{$texto .= "<h3>&nbsp;&nbsp;$dadate </h3>\n";}
+				if($fournid!="abcbibi"){
+        		$texto .= "<h3 style=\"page-break-before:always\" >&nbsp;&nbsp;$dadate </h3>\n";
+				}
+				//enregistre la date de commande dans la table produit de chaque produit (si necessaire pour l'instant)
+				$qtcmd="qtcommande_".$produit->id_produit;
+				$ret->update($table_produit, '"' . $produit->id_produit . '"', 'date_commande="' . $date . '"', 'commande="1"', 'quantite_commande="' . $_POST[$qtcmd] . '"');	
+				
 				
 				$texto .= "<table cellspacing=\"0\" >\n";
 				$texto .="<tr style=\"height:40px\" class=\"clean\" align=\"center\"><td colspan=\"9\">&nbsp;</td></tr>\n";
@@ -85,7 +88,7 @@ $texto .="<h1>Gestion Produit: Commande &agrave; faire</h1>
 				
 				$texto .="<tr  align=\"center\"><td colspan=\"9\">&nbsp;</td></tr>\n";
 				$texto.= "<tr>
-				<th class=\"listingprod\">Titre</th>
+				<th class=\"listingprod\">Famille</th>
 				<th class=\"listingprod\">Categ</th>
 				<th class=\"listingprod\">Produit</th>
 				<th class=\"listingprod\">reference</th>
@@ -99,7 +102,11 @@ $texto .="<h1>Gestion Produit: Commande &agrave; faire</h1>
 			}
 		if($produit->stock_mini>$produit->stock){$necessaire=$produit->stock_mini-$produit->stock;}
 		else{$necessaire="";}
-		$qtcmd="qtcommande_".$produit->id_produit;
+		
+		//creer un insert dans la table commande_list pour le produit en cours avec l'id_commande recupere
+				
+				$req_com_list->save($table_commande_list, "''",  '"' . $id_commande . '"', '"' . $produit->id_produit . '"', '"' . $_POST[$qtcmd] . '"', "''");
+
 		$texto .= "<tr style=\"height:30px\" $cololign align='center'>
 		<td class=\"case\"> $produit->titre</td>
 		<td class=\"case\"> $produit->categ</td>
@@ -116,7 +123,6 @@ $texto .="<h1>Gestion Produit: Commande &agrave; faire</h1>
 		$fournid=$produit->id_fournisseur;
 	}
 $texto .= "</table>";
-$texto .= "<br /><br /><br /></body></html>";
-echo $texto;
+
 
 ?>

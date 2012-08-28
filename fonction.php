@@ -86,4 +86,40 @@ $wR = $GLOBALS['wR'];
 	return $ordre;
 }
 
+
+function inp($val,$nom,$size,$typ,$class) {
+switch($typ){
+ case "text";
+$boite = "<input class=\"$class\" id=\"" . $nom . "\" name=\"" . $nom . "\" size=\"".$size."\" type=\"text\" value=\"$val\">";
+ break;
+ case "hidden";
+$boite = "<input id=\"" . $nom . "\" name=\"" . $nom . "\" type=\"hidden\" value=\"$val\">";
+ break;
+ 
+ case "checkbox";
+if($size=="1") {$check="checked";};
+$boite = "<input class=\"check-$class\" id=\"" . $nom . "\" name=\"" . $nom . "\" value=\"" . $val . "\" size=\"".$size."\" type=\"checkbox\"" . $check . " >";
+ break;
+
+case "textarea";
+$boite = "<textarea class=\"$class\" id=\"" . $nom . "\" name=\"" . $nom . "\" rows=\"".$size."\">$val</textarea>";
+ break;
+ 
+  case "select";
+$boite = "<select class=\"$class\" name=\"$nom\">\n";
+reset($val);
+$select = $val["selected"];
+next($val);
+while (list($key, $value) = each($val)) {
+	$boite .= "<option";
+	if($select=="$key"){$boite .= " SELECTED";}
+	$boite .= " value=\"$key\">$value</option>\n";
+	}
+ $boite .= "</select>";
+ break;
+	}
+	return $boite;
+}
+
+
 ?>
