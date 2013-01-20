@@ -30,7 +30,7 @@ $body_mess = "";
 include('../menu.php');
 $menu = $texto;
 unset($texto);
-
+$texto="";
 
 
 $minimenu = "<div>";

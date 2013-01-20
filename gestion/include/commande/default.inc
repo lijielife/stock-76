@@ -4,6 +4,7 @@ $texto  .=<<<EOD
 <link rel="stylesheet" href="../js/thickbox.css" type="text/css" media="screen" />
 <script type="text/javascript" src="../js/thickbox.js"></script>
 EOD;
+$anneeencours= date("Y");
 $texto .="
 <script type=\"text/javascript\">
 	$(document).ready(
@@ -14,9 +15,22 @@ $texto .="
 			var lien = $(this).attr('id');
 			$('#resultat').load('./include/commande/commande_list', {lacom: lien});
 			});
-
 	});
-
+	
+	$(document).ready(
+	function(){
+			$(\"[accordion]\").click(function(){
+				var acc = $(this).attr('accordion');
+				$('tr[accordionnable=\"' + acc + '\"]').slideToggle();
+				$(this).prev('td').find('span').html(function(i,txt) {
+       			return txt === '<img src=\"../img/1.png\">' ? '<img src=\"../img/4.png\">' : '<img src=\"../img/1.png\">';
+					});
+			});
+	$('tr[accordionnable^=\"2\"]').slideToggle();
+	$('tr[accordionnable^=\"$anneeencours-\"]').slideToggle();
+	$('td[accordion^=\"$anneeencours-\"]').find('span').html(function(i,txt) {
+    return txt === '<img src=\"../img/1.png\">' ? '<img src=\"../img/4.png\">' : '<img src=\"../img/1.png\">';	});
+	});
 </script>
 
 <div style=\"float:right;width:65%\" id=\"resultat\">";
@@ -76,7 +90,7 @@ $texto .= "</div>
 <div id=\"accordion\">";
 
 $reqpre = new db();
-$say = $reqpre->findquery("SELECT * FROM  `commande`, `fournisseur` WHERE commande.id_fournisseur=fournisseur.id_fournisseur ORDER BY date DESC");
+$say = $reqpre->findquery("SELECT * FROM  `commande`, `fournisseur` WHERE commande.id_fournisseur=fournisseur.id_fournisseur ORDER BY date DESC, id_commande DESC");
 $texto.= "<table id=\"listingcommande\" style=\"float:left;\" cellspacing=\"0\" class=\"listing\"><tr><th class=\"listingtitre\">date</th><th class=\"listingtitre\">fourn</th><th class=\"listingtitre\">Facture</th><th class=\"listingtitre\">note</th><th class=\"listingtitre\"><img border='0' src='../img/pencil.gif' alt='modif'></th><th class=\"listingtitre\"><img border='0' src='../img/erase.png' alt='efface'></th></tr>\n";
 $nblignemax = 1;
 $monthaff="00";
@@ -89,13 +103,13 @@ if($year!=$yearaff){$texto .= "<tr class=\"stock\" align='center' id='nodbclick'
 <td colspan=\"6\"> --------- $year ---------	</td></tr>";}
 if(($year!=$yearaff && $month==$monthaff) OR ($month!=$monthaff)){ $lemonth = strtoUpper(strftime("%B", mktime(0, 0, 0, $month, 1, $year)));
 	$texto .= "<tr class=\"stock\" id='nodbclick'>
-<td colspan=\"6\"  style='text-align: center;'> --------- $lemonth ---------	</td></tr>";}
+<td accordion='$year-$month'><span><img src='../img/1.png'></span></td><td colspan=\"5\" accordion='$year-$month' style='text-align: center;'> --------- $lemonth --------- </td></tr>";}
 $note_abrege = substr($commande->note, 0, 30);
 
 $modifmodal = '<a class="thickbox" href="./modifcommande?lid='.$commande->id_commande.'&height=350&width=550&kase=commande" title="Commande du '.$datecom.' chez '. $commande->fournisseur.'">';
 
-$texto .= "<tr $cololign id=\"tr_$commande->id_commande\">
-<td><a class=\"commando\" id=\"$commande->id_commande\" href='#'> $datecom</a></td>
+$texto .= "<tr $cololign id=\"tr_$commande->id_commande\" accordionnable=\"$year-$month\" >
+<td ><a class=\"commando\" id=\"$commande->id_commande\" href='#'> $datecom</a></td>
 <td align='center'><a class=\"commando\" id=\"$commande->id_commande\" href='#'> $commande->fournisseur</a></td>
 <td align='center'><a class=\"commando\" id=\"$commande->id_commande\" href='#'> $commande->num_facture</a></td>
 <td align='center'><a class=\"thickbox\" href=\"./include/commande/popnote?id=$commande->id_commande&height=200&width=300\">$note_abrege...</a></td>

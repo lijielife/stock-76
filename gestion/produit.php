@@ -1,5 +1,4 @@
 ﻿<?php
-
 require_once("../db.class.php");
 include("./include/produit/function.inc");
 include("../fonction.php");
@@ -87,6 +86,7 @@ $body_script .= '<style>
 include('../menu.php');
 $menu = $texto;
 unset($texto);
+$texto="";
 
 
 

@@ -15,11 +15,14 @@
 	<th class=\"listingprod\">stock</th>
 	<th class=\"listingprod\">stk_mini</th>
 	<th class=\"listingprod\">QT_CMD</th>
+		<th class=\"listingprod\">QT_mini</th>
 	</tr>\n";
 	$idacommander ="";
+	
 	foreach ($_POST['cmd'] as $value) {
-		$idacommander .= "$value, ";
+	if($_POST["qtcommande_".$value] > 0){$idacommander .= "$value, ";}
 			}
+	
 	$newtaille =strlen($idacommander)-2; //supprime la derniere virgule et l'espace
 	$idacommander = substr($idacommander, 0, $newtaille);
 	$req->findquery("SELECT * 
@@ -39,7 +42,7 @@
 		if(($produit->used=="1") && ($produit->commande=="1")){
 				$cololign = "class=\"bientotstock\"";
 			}
-    
+    	$qtprevu = $_POST["qtcommande_".$produit->id_produit];
 		if($produit->stock_mini > $produit->stock){$necessaire=$produit->stock_mini-$produit->stock;}
 		else{$necessaire="0";}
 		$texto .= "<tr $cololign align='center'>
@@ -53,8 +56,9 @@
 		<td> <b>$produit->stock</b></td>
 		<td> $produit->stock_mini</td>
 		<td><input type='hidden' name='cmd[]' value='$produit->id_produit' />
-		 <input class=\"actif\" name=\"qtcommande_$produit->id_produit\" size=\"4\" value=\"$necessaire\" /></td>";
-		$texto .= "</td>
+		 <input style=\"width:50px\" class=\"actif\" name=\"qtcommande_$produit->id_produit\" size=\"4\" value=\"$qtprevu\" /></td>
+		<td>$necessaire</td>";
+		$texto .= "
 		</tr>\n";
 			$total = $total + (floatval($produit->stock) * floatval($produit->prix));
 		$nblignemax++;

@@ -5,12 +5,55 @@
 	$req_com = new db();
 	$req_com_list = new db();
 	$ret = new db();
-	$texto .="&nbsp;&nbsp;<A class=\"discret\" href=\"javascript:window.print()\">Imprimer la liste</A><br /><br />";
-	$texto .= "<span style=\"page-break-before:always\" >&nbsp;&nbsp; </span>\n";
+	$texto .="&nbsp;&nbsp;<A class=\"discret\" href=\"javascript:window.print()\">Imprimer la liste</A><br /><br />\n";
+	$texto .= "<div style=\"page-break-after:always\" >&nbsp;&nbsp; </div>\n";
 	//creer un liste dans la table commande en fonction des fournisseurs
 	$date = date("Y-m-d");
 	setlocale(LC_TIME, "fr_FR");
 	$dadate = strftime("%A %d %B %Y");
+	$idacommander="";
+	
+	//lecteure entete nom_adresse cab
+	$selectentete ="<form id=\"formentete\"><select id=\"entetecab\" style=\"width:300px\">\n";
+	$jsentetecab="<input id=\"option0\" type=\"hidden\" value=\"\" />\n";
+	$req_nom_adresse = new db();
+	$req_nom_adresse->findquery("SELECT * FROM nom_adresse ORDER BY classement ASC");
+	while($lesnomadresse = $req_nom_adresse->row()){
+		if($lesnomadresse->classement=="1"){
+			$selectclassement="selected";
+		}
+		else{
+				$selectclassement="";
+		}
+		$selectentete .="<option $selectclassement value=\"$lesnomadresse->id_nom_adresse\">$lesnomadresse->nom</option>\n";
+		$nomadd = nl2br($lesnomadresse->adresse);
+		$nomadd = preg_replace('/\n(\r)?/', ' <br /> ', $lesnomadresse->adresse);
+		$jsentetecab .= "<input id=\"option$lesnomadresse->id_nom_adresse\" type=\"hidden\" value=\"$lesnomadresse->nom <br /> $lesnomadresse->adresse\" />\n";
+	}
+	
+	$selectentete .="<option  value=\"0\">laisser vide</option></select>
+	$jsentetecab</form>";
+	
+	$texto .="$selectentete<br />\n";
+	$texto .="<script type=\"text/javascript\">
+$(document).ready(function(){
+	var theform = document.forms[\"formentete\"];
+theform.elements[\"entetecab\"].onchange=function(){ 
+var letruc = \"option\" + $(\"#entetecab\").find(':selected').val();
+
+	var lachose = theform.elements[letruc].value;
+
+$('.entetecabinet').html(lachose);
+}
+
+var lentetecab = theform.elements[\"option1\"].value;
+$('.entetecabinet').html(lentetecab);
+
+});
+</script>\n";
+	
+	
+	$entetecab = "Nom adresse";
 	
 	// foreach ($_POST['cmd'] as $value) {
 	// if($_POST["qtcommande_".$value] > 0){$idacommander .= "$value, ";}
@@ -72,17 +115,17 @@
 				}
 				//enregistre la date de commande dans la table produit de chaque produit (si necessaire pour l'instant)
 				$qtcmd="qtcommande_".$produit->id_produit;
-				$ret->update($table_produit, '"' . $produit->id_produit . '"', 'date_commande="' . $date . '"', 'commande="1"', 'quantite_commande="' . $_POST[$qtcmd] . '"');	
+				$ret->update($table_produit, '"' . $produit->id_produit . '"', 'date_commande="' . $date . '"', 'commande="1"', 'quantite_commande="' . $_POST["qtcommande_".$produit->id_produit] . '"');	
 				
 				
 				$texto .= "<table cellspacing=\"0\" >\n";
 				$texto .="<tr style=\"height:40px\" class=\"clean\" align=\"center\"><td colspan=\"9\">&nbsp;</td></tr>\n";
-				$texto .="<tr align=\"center\"><td colspan=\"9\"><h3>$produit->fournisseur, $produit->nom $produit->prenom</h3></td></tr>\n";
+				$texto .="<tr align=\"center\"><td colspan=\"2\" rowspan=\"9\"><div class=\"entetecabinet\"> $entetecab</div> <br /><br /><i>Ref Client: <b>$produit->client<b></i></td><td rowspan=\"9\">&nbsp; </td><td colspan=\"7\"><h3>$produit->fournisseur, $produit->nom $produit->prenom</h3></td></tr>\n";
 				$texto .="<tr align=\"center\"><td colspan=\"9\"><i>Ref Client: <b>$produit->client<b></i></td></tr>\n";
 				$texto .="<tr align=\"center\"><td colspan=\"9\">$produit->adresse</td></tr>\n";
 				$texto .="<tr align=\"center\"><td colspan=\"9\"><i>tel: <b>$produit->tel<b></i></td></tr>\n";
 				$texto .="<tr align=\"center\"><td colspan=\"9\"><i>portable: <b>$produit->portable<b></i></td></tr>\n";
-				$texto .="<tr align=\"center\"><td colspan=\"9\"><i>fax :<b>$produit->Fax<b></i></td></tr>\n";
+				$texto .="<tr align=\"center\"><td colspan=\"9\"><i>fax :<b>$produit->fax<b></i></td></tr>\n";
 				$texto .="<tr align=\"center\"><td colspan=\"9\"><i>email de contact:</i><a href=\"mailto:$produit->nom $produit->prenom<$produit->email>\">$produit->email</td></tr>\n";
 				$texto .="<tr align=\"center\"><td colspan=\"9\"><i>email de commande:</i><a href=\"mailto:$produit->nom $produit->prenom<$produit->email_cmd>\">$produit->email_cmd</td></tr>\n";
 				
@@ -105,7 +148,7 @@
 		
 		//creer un insert dans la table commande_list pour le produit en cours avec l'id_commande recupere
 				
-				$req_com_list->save($table_commande_list, "''",  '"' . $id_commande . '"', '"' . $produit->id_produit . '"', '"' . $_POST[$qtcmd] . '"', "''");
+				$req_com_list->save($table_commande_list, "''",  '"' . $id_commande . '"', '"' . $produit->id_produit . '"', '"' . $_POST["qtcommande_".$produit->id_produit] . '"', "''");
 
 		$texto .= "<tr style=\"height:30px\" $cololign align='center'>
 		<td class=\"case\"> $produit->titre</td>
@@ -117,7 +160,7 @@
 		<td class=\"casediscret\"> <b>$produit->stock</b></td>
 		<td class=\"casediscret\"> $produit->stock_mini</td>
 		<td class=\"case\"> $necessaire</td>
-		<td class=\"case\">".$_POST[$qtcmd]."</td>";
+		<td class=\"case\">".$_POST["qtcommande_".$produit->id_produit]."</td>";
 		$texto .= "</tr>\n";
 		$nblignemax++;
 		$fournid=$produit->id_fournisseur;

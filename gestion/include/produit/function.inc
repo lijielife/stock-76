@@ -25,7 +25,12 @@ class Entete
 		$this->numcase = count($thete);
 		for ($i = 1; $i <= $this->numcase; $i++) {
 			$intitule = $thete[$i][0];
+			if (isset($thete[$i][1])){
 			$classement = $thete[$i][1];
+			}
+			else{
+				$classement = "";
+			}
 			$this->whatwhat .="<th class=\"".$this->css."\">";
 			
 			if($classement!=""){

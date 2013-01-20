@@ -4,24 +4,25 @@
 	$reqpre = new db();
 	$rajout_requete= "";
 	//si demande d'une categ specifique
+	if (isset($_GET['categ'])){
 	if($_GET['categ']){
 		$cat = mysql_real_escape_string($_GET['categ']);
 		$rajout_requete = "AND categ.id_categ=$cat ";
 		$rajout_class = "&categ=$cat";
-	}
-	
+	}}
+		if (isset($_GET['fournini'])){
 	if($_GET['fournini']){
 		$fournis = mysql_real_escape_string($_GET['fournini']);
 		$rajout_requete = "AND fournisseur.id_fournisseur=$fournis ";
 		$rajout_class = "&fournini=$fournis";
-	}
-	
+	}}
+		if (isset($_GET['search'])){
 	if(isset($_GET['search'])){
 		$que = mysql_real_escape_string($_GET['search']);
 		$rajout_requete = "AND (produit.produit LIKE '%$que%' OR fournisseur.fournisseur LIKE '%$que%' OR produit.reference LIKE '%$que%' OR categ.categ LIKE '%$que%')";
 		$rajout_class = "&search=$que";
 		$elemrech = $que;
-		}
+		}}
 		
 	$allGET = "";
 	foreach ($_GET as $key => $value) {
@@ -44,7 +45,7 @@
 	
 	
 	$total = 0;
-	$texto.= "<form name=\"cherch\" action=\"./produit\" method=\"get\" accept-charset=\"utf-8\">
+	$texto= "<form name=\"cherch\" action=\"./produit\" method=\"get\" accept-charset=\"utf-8\">
 	<p>	<input  autocomplete=\"off\" class=\"actif corners\" type=\"text\" id=\"txt_search\" name=\"search\" value=\"\"><input class=\"medium button blue\" type=\"submit\" value=\"rechercher\"></p>
 	</form><form action=\"./produit?action=commander\" method=\"post\"><span id=\"suggest\">
 	";
@@ -89,7 +90,8 @@
 		<td> <b>$produit->stock</b></td>
 		<td> $produit->stock_mini</td>
 		<td> $produit->quantite_commande</td>
-		<td><input type=\"checkbox\" name=\"cmd[]\" value=\"$produit->id_produit\"/></td>
+		<td><input type='hidden' name='cmd[]' value='$produit->id_produit' />
+		 <input style=\"width:30px\" class=\"actif\" name=\"qtcommande_$produit->id_produit\" size=\"4\" value=\"$necessaire\" /></td>
 		<td> $datecom</td>";
 	//	$texto .= "<td><a href='produit?action=modif&id=" .  $produit->id_produit . "$allGET'><img border='0' src='../img/pencil.gif' alt='modif'></a></td>";
 		$texto .= "<td>".$totaligne."</td>

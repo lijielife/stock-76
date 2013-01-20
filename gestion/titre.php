@@ -11,6 +11,7 @@ $body_script = "";
 include('../menu.php');
 $menu = $texto;
 unset($texto);
+$texto="";
 
 
 

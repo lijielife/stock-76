@@ -23,4 +23,14 @@ $table_prescription = "prescription";
 $table_torque = "torque";
 $table_torq_categ = "torq_categ";
 
+$texto ="";
+$ordreby ="";
+$necessaire ="";
+$mess ="";
+$lesens ="";
+$sens ="";
+$rajout_class ="";
+$body_script ="";
+
+
 ?>
