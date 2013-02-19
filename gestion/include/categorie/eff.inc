@@ -20,7 +20,7 @@ $texto .="<h3>Suppression de categorie</h3>";
 			AND produit.id_fournisseur = fournisseur.id_fournisseur AND categ.id_categ=$cat ORDER BY categ.categ");
 		$texto .= "<table cellspacing=\"0\" >
 		<tr>
-		<th class=\"listingprod\">titre</th>
+		<th class=\"listingprod\">Famille</th>
 		<th class=\"listingprod\">Categ</th>
 		<th class=\"listingprod\">Produit</th>
 		<th class=\"listingprod\">fournisseur</th>

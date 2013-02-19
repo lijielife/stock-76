@@ -6,7 +6,6 @@
 	$req_com_list = new db();
 	$ret = new db();
 	$texto .="&nbsp;&nbsp;<A class=\"discret\" href=\"javascript:window.print()\">Imprimer la liste</A><br /><br />\n";
-	$texto .= "<div style=\"page-break-after:always\" >&nbsp;&nbsp; </div>\n";
 	//creer un liste dans la table commande en fonction des fournisseurs
 	$date = date("Y-m-d");
 	setlocale(LC_TIME, "fr_FR");
@@ -52,7 +51,7 @@ $('.entetecabinet').html(lentetecab);
 });
 </script>\n";
 	
-	
+	$texto .= "<div style=\"page-break-after:always\" >&nbsp;&nbsp; </div>\n";
 	$entetecab = "Nom adresse";
 	
 	// foreach ($_POST['cmd'] as $value) {

@@ -6,7 +6,7 @@ $reqpre = new db();
 	<tr>
 		<th class=\"listingcateg\">id</th>
 		<th class=\"listingcateg\">Categories</th>
-		<th class=\"listingcateg\">Titre</th>
+		<th class=\"listingcateg\">Famille</th>
 		<th class=\"listingcateg\">modifier</th>
 		<th class=\"listingcateg\">effacer</th>
 		</tr>\n";

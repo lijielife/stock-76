@@ -1,17 +1,17 @@
 <?php
 
-$texto .="<h3>Suppression d'un titre</h3>";
+$texto .="<h3>Suppression d'une Famille</h3>";
 $req = new db();
 $req->findone('titre', $_GET['id']);
 $letitre = $req->row();
 $req->findquery("SELECT * FROM categ WHERE id_titre='".$_GET['id']."'");
 if($req->__get('numrows')==0){
-$texto .="<form method=\"POST\" action=\"./save\"><input type=\"hidden\" name=\"lid\" value=\"".$_GET['id']."\"><input type=\"hidden\" name=\"action\" value=\"efftitre\"><span class=\"affichage\">Etes-vous sur de vouloir supprimer ce titre :</span > <b>$letitre->titre</b>
+$texto .="<form method=\"POST\" action=\"./save\"><input type=\"hidden\" name=\"lid\" value=\"".$_GET['id']."\"><input type=\"hidden\" name=\"action\" value=\"efftitre\"><span class=\"affichage\">Etes-vous sur de vouloir supprimer cette Famille :</span > <b>$letitre->titre</b>
 <input type=\"submit\" name=\"submitbutton\" value=\"Supprimer\" id=\"submitbutton\">	<input type=\"button\" name=\"cancel\" value=\"annuler\" onClick=\"history.back()\"></form>";
 }
 else{
 	$texto .=  "<span class=\"affichage\">Attention vous ne pouvez pas effacer la cat&eacute;gorie:<b> $letitre->titre</b></span><br /><br />
-	<span class=\"affichage\">vous devez modifier le titre des categories y appartenant.</span><br /><br />";
+	<span class=\"affichage\">vous devez modifier la famille des categories y appartenant.</span><br /><br />";
 	$tit=$_GET['id'];
 	$req->findquery("SELECT *
 		FROM titre, categ
@@ -21,7 +21,7 @@ else{
 	<tr>
 	<th class=\"listingcateg\">id</th>
 	<th class=\"listingcateg\">Categories</th>
-	<th class=\"listingcateg\">Titre</th>
+	<th class=\"listingcateg\">Famille</th>
 	<th class=\"listingcateg\">modifier</th>
 	<th class=\"listingcateg\">effacer</th>
 	</tr>\n";

@@ -36,7 +36,7 @@ $nblignemax++;}
 
 $texto .= "</table>";
 $texto .= "<div style=\"clear: both\"><a class=\"medium button orange\" href=\"./commande?action=modif&lacom=$lacom\" >Modifier</a>
-<a class=\"medium button red\" href=\"./commande?action=eff&lacom=$lacom\" >supprimer</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<a class=\"medium button red\" href=\"./commande?action=eff&id=$lacom\" >supprimer</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 <a class=\"medium button green\" href=\"./commande?action=add&lacom=$lacom\" >Ajouter</a>
 <a class=\"medium button blue\" href=\"./commande?action=print&lacom=$lacom\" >Imprimer</a>
 </div>";

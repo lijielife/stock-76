@@ -68,10 +68,11 @@ switch($_POST['action']){
 	$mess ="changeprod";
 	$page = "produit";
 	break;
-	case "effprod";
-	$test = $ret->delete('produit', $_POST['id']);
-	$mess ="effaceprod";
-	$page = "produit";
+	case "effcommande";
+	$ret->findupdate("DELETE FROM commande_list WHERE id_commande='". $_POST['lid'] ."'");
+	$test = $ret->delete('commande', $_POST['lid']);
+	$mess ="effacecommande";
+	$page = "commande";
 	break;
 }
 

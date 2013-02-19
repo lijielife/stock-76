@@ -14,7 +14,7 @@ switch($_POST['action']){
 	
 	$_POST['stock'] = (($_POST['stock']<0)?"0":$_POST['stock']); // verifie qu'il ne peut pas y avoir une valeur stock negative
 // met le prix au format d'enregistrement bdd avec . au lieu de , et 2 decimales
-	$montant1 = split('[.,]', $_POST['prix']);
+	$montant1 = explode ('[.,]', $_POST['prix']);
 	$montant2 = implode (".", $montant1);
 	$_POST['prix'] = number_format($montant2, 2, '.', '');
 //si commande en cours checker affecte la date du jour sinon 0000-00-00
@@ -45,10 +45,11 @@ switch($_POST['action']){
 	break;
 	case "modprod";
 	$_POST['stock'] = (($_POST['stock']<0)?"0":$_POST['stock']);
-	$montant1 = split('[.,]', $_POST['prix']);
+	$montant1 = explode ('[.,]', $_POST['prix']);
 	$montant2 = implode (".", $montant1);
+	$montant2 = floatval($montant2);
 	$_POST['prix'] = number_format($montant2, 2, '.', '');
-	list ($day, $month, $year) = split ("/", $_POST['date_commande']);
+	list ($day, $month, $year) = explode ("/", $_POST['date_commande']);
 	$_POST['date_commande'] = $year ."-". $month ."-". $day;
 	$ret->update('produit', '"' . $_GET['id'] . '"', 'id_categ="' . $_POST['categorie'] . '"',  'produit="' . $_POST['produit'] . '"',  'id_fournisseur="' . $_POST['fournisseur'] . '"',  'reference="' . $_POST['reference'] . '"',  'conditionnement="' . $_POST['conditionnement'] . '"',  'prix="' . $_POST['prix'] . '"',  'stock="' . $_POST['stock'] . '"',  'stock_mini="' . $_POST['stock_mini'] . '"',  'quantite_commande="' . $_POST['quantite_commande'] . '"', 'date_commande="' . $_POST['date_commande'] . '"',  'used="' . $_POST['used'] . '"',  'commande="' . $_POST['commande'] . '"');	
 	$mess ="changeprod";

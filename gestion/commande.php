@@ -62,6 +62,9 @@ switch($laction){
 	case "cmdprint";
 		include("./include/commande/cmdprint.inc");
 	break;
+	case "print";
+		include("./include/commande/print.inc");
+	break;
 	default;
 		$rajout = "tous";
 		include("./include/commande/default.inc");

@@ -28,5 +28,6 @@ Gestion Stock en ligne: Titre: 	<?php echo $rajout; ?>
 <?php echo $yield; ?>
 
 </div>
+
 </body>
 </html>

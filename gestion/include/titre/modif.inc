@@ -1,7 +1,7 @@
 <?php
 
-$texto .="<h3>Modification d'un titre</h3>";
-$texto .=  "<span class=\"affichage\">Attention vous allez modifier un titre, les produits et categorie y appartenant changeront de chapitre</span><br /><br />";
+$texto .="<h3>Modification d'une Famille</h3>";
+$texto .=  "<span class=\"affichage\">Attention vous allez modifier une famille, les produits et categories y appartenant changeront de chapitre</span><br /><br />";
 $req = new db();
 $req->findone('titre', $_GET['id']);
 $letitre = $req->row();

@@ -28,5 +28,6 @@ Gestion Stock en ligne: categorie: 	<?php echo $rajout; ?>
 <?php echo $yield; ?>
 
 </div>
+
 </body>
 </html>

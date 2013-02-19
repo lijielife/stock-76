@@ -32,6 +32,7 @@
 	AND produit.id_fournisseur = fournisseur.id_fournisseur
 	ORDER BY fournisseur.fournisseur ASC");
 	$nbdeprod = $req->__get('numrows');
+	$total ="";
 	//dfdvxc
 	$nblignemax = 1;
 		while($produit = $req->row()){
@@ -67,7 +68,7 @@
     $texto .="</table>";
 	$texto .="<input type='hidden' name='nbdeprod' value='$nbdeprod' />
 	<input class=\"large button blue\" 
- type=\"submit\" name=\"submitbutton\"  value=\"passer commande/ imprimer\" id=\"submitbutton\">
+ type=\"submit\" name=\"submitbutton\"  value=\"passer commande / imprimer\" id=\"submitbutton\">
 	<br />
 	<input class=\"small button red\"  type=\"button\" name=\"cancel\" value=\"annuler\" onclick=\"history.back()\"></form>";
 	

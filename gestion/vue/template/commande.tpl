@@ -28,5 +28,6 @@ Gestion Stock en ligne Commande
 <?php echo $yield; ?>
 
 </div>
+
 </body>
 </html>

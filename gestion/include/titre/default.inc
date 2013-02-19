@@ -2,7 +2,7 @@
 
 $reqpre = new db();
 $say = $reqpre->findquery("SELECT * FROM  `titre` WHERE 1 ORDER BY classement");
-$texto.= "<table cellspacing=\"0\" class=\"listing\"><tr><th class=\"listingtitre\">id</th><th class=\"listingtitre\">Titre</th><th class=\"listingtitre\">classement</th><th class=\"listingtitre\">modifier</th><th class=\"listingtitre\">effacer</th></tr>\n";
+$texto.= "<table cellspacing=\"0\" class=\"listing\"><tr><th class=\"listingtitre\">id</th><th class=\"listingtitre\">Famille</th><th class=\"listingtitre\">classement</th><th class=\"listingtitre\">modifier</th><th class=\"listingtitre\">effacer</th></tr>\n";
 $nblignemax = 1;
 while($titre = $reqpre->row()){
 $cololign = (($nblignemax%2 == 0)?"":"class=\"alt\"");
