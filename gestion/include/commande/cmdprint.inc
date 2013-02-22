@@ -8,7 +8,7 @@
 	$texto .="&nbsp;&nbsp;<A class=\"discret\" href=\"javascript:window.print()\">Imprimer la liste</A><br /><br />\n";
 	//creer un liste dans la table commande en fonction des fournisseurs
 	$date = date("Y-m-d");
-	setlocale(LC_TIME, "fr_FR");
+	setlocale(LC_TIME, 'fr_FR.utf8','fra');
 	$dadate = strftime("%A %d %B %Y");
 	$idacommander="";
 	

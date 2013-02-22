@@ -1,0 +1,8 @@
+SetEnv PHP_VER 5
+AuthUserFile /homez.379/orthodont/stock/.htpasswd 
+AuthGroupFile /dev/null
+AuthName "Acces Restreint"
+AuthType Basic
+<Limit GET POST>
+require valid-user
+</Limit>

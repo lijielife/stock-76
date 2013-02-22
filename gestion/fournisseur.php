@@ -4,6 +4,7 @@ require_once("../db.class.php");
 include("./include/produit/function.inc");
 $date = date("d/m/Y");
 $laction=(isset($_GET['action']))?$_GET['action']:"";
+setlocale(LC_TIME, 'fr_FR.utf8','fra');
 $dadate = strftime("%A %d %B %Y");
 $head_script ="<script type=\"text/javascript\" language=\"javascript\" src=\"../$Jquery\" charset=\"utf-8\"></script>";
 $head_css ="<link rel=\"stylesheet\" href=\"../style.css\" type=\"text/css\" media=\"screen\" />\n";
