@@ -6,7 +6,7 @@ $texto .="<h3>Suppression de categorie</h3>";
 	$lacateg = $req->row();
 	$req->findquery("SELECT * FROM produit WHERE id_categ='".$_GET['id']."'");
 	if($req->__get('numrows')==0){
-	$texto .="<form method=\"POST\" action=\"./categorie?action=save\"><input type=\"hidden\" name=\"lid\" value=\"".$_GET['id']."\"><input type=\"hidden\" name=\"action\" value=\"effcateg\"><span class=\"affichage\">Etes-vous sur de vouloir supprimer cette categorie :</span > <b>$lacateg->categ</b>
+	$texto .="<form method=\"POST\" action=\"./categorie?action=save\"><input type=\"hidden\" name=\"lid\" value=\"".$_GET['id']."\"><input type=\"hidden\" name=\"action\" value=\"effcateg\"><span class=\"affichage\">Etes-vous sur de vouloir supprimer cette categorie : <b>$lacateg->categ</b></span >
 	<input type=\"submit\" name=\"submitbutton\" class=\"small button blue\" value=\"Supprimer\" id=\"submitbutton\">	<input class=\"small button red\" type=\"button\" name=\"cancel\" value=\"annuler\" onClick=\"history.back()\"></form>";
 	}
 	else{

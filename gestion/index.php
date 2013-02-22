@@ -1,6 +1,6 @@
 <?php
 
-header('Location:./produit?action=manquant');
+header('Location:./produit?manquant=oui');
 exit;
 
 ?>

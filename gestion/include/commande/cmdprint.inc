@@ -85,7 +85,8 @@ $('.entetecabinet').html(lentetecab);
 	AND categ.id_titre = titre.id_titre
 	AND produit.id_fournisseur = fournisseur.id_fournisseur
 	ORDER BY fournisseur.fournisseur, produit.id_produit  ASC");
-	$texto .= "<h3>&nbsp;&nbsp;$dadate </h3>\n";
+	$texto .= "<h3 >&nbsp;&nbsp;$dadate </h3>\n";
+	$texto .= "<h2 >&nbsp;&nbsp;BON de COMMANDE </h2>\n";
 	$nblignemax = 1;
 	$fournid="abcbibi";
 	$id_commande = "";
@@ -108,9 +109,10 @@ $('.entetecabinet').html(lentetecab);
 				$req_com->save($table_commande, "''",  '"' . $date . '"', "''", "''", '"' . $produit->id_fournisseur .'"');
  				$id_commande = $req_com->lastid;  //recupere l'id_commande de save pour les insertion dans commande_list
 				
-				$texto .= "</table>";
+				$texto .= "</table>\n";
 				if($fournid!="abcbibi"){
-        		$texto .= "<h3 style=\"page-break-before:always\" >&nbsp;&nbsp;$dadate </h3>\n";
+        		$texto .= "<h3 style=\"page-break-before:always;\" >&nbsp;&nbsp;$dadate </h3>\n";
+				$texto .= "<h2 >&nbsp;&nbsp;BON de COMMANDE </h2>\n";
 				}
 				//enregistre la date de commande dans la table produit de chaque produit (si necessaire pour l'instant)
 				$qtcmd="qtcommande_".$produit->id_produit;

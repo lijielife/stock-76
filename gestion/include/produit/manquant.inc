@@ -1,13 +1,19 @@
 <?php
 	include("./include/produit/ordre.inc");
-	if($_GET['ordre']==""){$ordreby ="produit.commande, produit.id_fournisseur";}
+	if (isset($_GET['ordre'])){
+	if($_GET['ordre']==""){
+		$ordreby =", produit.id_fournisseur";}
+	}
+	else{
+		$ordreby =", produit.id_fournisseur";
+	}
 	$texto .="<br /><A onclick=\"window.open(this.href, '_blank'); return false;\" href=\"./commande\">Liste Imprimable</A><br />";
 	$reqpre = new db();
 	$reqpre->findquery("SELECT *
 		FROM produit, titre, categ, fournisseur
 		WHERE categ.id_categ = produit.id_categ
 		AND categ.id_titre = titre.id_titre
-		AND produit.id_fournisseur = fournisseur.id_fournisseur AND  (produit.stock<produit.stock_mini OR produit.commande=1) AND produit.used=1 ORDER BY $ordreby");
+		AND produit.id_fournisseur = fournisseur.id_fournisseur AND  (produit.stock < produit.stock_mini OR produit.commande=1) AND produit.used=1 ORDER BY produit.commande $ordreby");
 	$total = 0;
 	$previouscommande=false;
 	$texto.= "<form name=\"cherch\" action=\"./produit?action=search\" method=\"post\" accept-charset=\"utf-8\">
@@ -18,7 +24,7 @@
 
 	include("./include/produit/entete.inc");
 	
-	$texto .= "<tr>" . $Titre->lacase . $Categ->lacase . $Produit->lacase . $Fourn->lacase .$ref->lacase .$condit->lacase .$prix->lacase .$stock->lacase .$stk_mini->lacase .$QT_CMD->lacase .$CMD->lacase .$date->lacase .$modif->lacase .$Totalprix->lacase . "</tr>";
+	// $texto .= "<tr>" . $Famille->lacase . $Categ->lacase . $Produit->lacase . $Fourn->lacase .$ref->lacase .$condit->lacase .$prix->lacase .$stock->lacase .$stk_mini->lacase .$QT_CMD->lacase .$CMD->lacase .$date->lacase .$modif->lacase .$Totalprix->lacase . "</tr>";
 
 	$texto .= "<tr style=\"background-color: #99FF99;color:#228822\" align='center'><td  colspan=\"14\"> --------- produit manquant ---------	</td></tr>";
 	$nblignemax = 1;

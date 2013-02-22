@@ -6,7 +6,7 @@ $req->findone('titre', $_GET['id']);
 $letitre = $req->row();
 $req->findquery("SELECT * FROM categ WHERE id_titre='".$_GET['id']."'");
 if($req->__get('numrows')==0){
-$texto .="<form method=\"POST\" action=\"./save\"><input type=\"hidden\" name=\"lid\" value=\"".$_GET['id']."\"><input type=\"hidden\" name=\"action\" value=\"efftitre\"><span class=\"affichage\">Etes-vous sur de vouloir supprimer cette Famille :</span > <b>$letitre->titre</b>
+$texto .="<form method=\"POST\" action=\"./titre?action=save\"><input type=\"hidden\" name=\"lid\" value=\"".$_GET['id']."\"><input type=\"hidden\" name=\"action\" value=\"efftitre\"><span class=\"affichage\">Etes-vous sur de vouloir supprimer cette Famille : <b>$letitre->titre</b></span >
 <input type=\"submit\" name=\"submitbutton\" value=\"Supprimer\" id=\"submitbutton\">	<input type=\"button\" name=\"cancel\" value=\"annuler\" onClick=\"history.back()\"></form>";
 }
 else{

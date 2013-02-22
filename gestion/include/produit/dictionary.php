@@ -1,7 +1,5 @@
 <?php
 $texto = "";
-	//$texto .= '<link rel="stylesheet" href="../js/thickbox.css" type="text/css" media="screen" />
-	//<script type="text/javascript" src="../js/thickbox.js"></script>';
 require("../../../config.php");
 require_once("../../../db.class.php");
 include("./function.inc");
@@ -25,17 +23,18 @@ $(document).ready(function(){
 	$reqpre = new db();
 	$rajout_requete= "";
 	//si demande d'une categ specifique
+	if (isset($_GET['categ'])){
 	if($_GET['categ']){
 		$cat = mysql_real_escape_string($_GET['categ']);
 		$rajout_requete = "AND categ.id_categ=$cat ";
 		$rajout_class = "&categ=$cat";
-	}
-	
+	}}	
+			if (isset($_GET['fournini'])){
 	if($_GET['fournini']){
 		$fournis = mysql_real_escape_string($_GET['fournini']);
 		$rajout_requete = "AND fournisseur.id_fournisseur=$fournis ";
 		$rajout_class = "&fournini=$fournis";
-	}
+	}}
 	
 	if(isset($_GET['search'])){
 		$que = mysql_real_escape_string($_GET['search']);
@@ -43,6 +42,15 @@ $(document).ready(function(){
 		$rajout_class = "&search=$que";
 		}
 		
+		
+		if (isset($_GET['manquant'])){
+	if($_GET['manquant']){
+		$fournis = mysql_real_escape_string($_GET['manquant']);
+		$rajout_requete = "AND (produit.stock < produit.stock_mini OR produit.commande=1) AND produit.used=1 ";
+		$rajout_class = "&manquant=oui";
+		$ordreby = ", produit.commande ASC" . $ordreby;
+	}}
+	
 	$allGET = "";
 	foreach ($_GET as $key => $value) {
 		$allGET .= "&$key=$value";
@@ -60,7 +68,7 @@ $(document).ready(function(){
 	$total = 0;
 if(($reqpre->__get('numrows'))!=0){
 	$texto.= "\n<table id=\"selectableau\" cellspacing=\"0\" >\n";
-
+$laction ="";
 	include("./entete.inc");
 
 
@@ -97,7 +105,8 @@ if(($reqpre->__get('numrows'))!=0){
 		<td> <b>$produit->stock</b></td>
 		<td> $produit->stock_mini</td>
 		<td> $produit->quantite_commande</td>
-		<td><input type=\"checkbox\" name=\"cmd[]\" value=\"$produit->id_produit\"/></td>
+		<td><input type='hidden' name='cmd[]' value='$produit->id_produit' />
+		 <input style=\"width:30px\" class=\"actif\" name=\"qtcommande_$produit->id_produit\" size=\"4\" value=\"$necessaire\" /></td>
 		<td> $datecom</td>";
 		//$texto .= "<td><a href='produit?action=modif&id=" .  $produit->id_produit . "$allGET'><img border='0' src='../img/pencil.gif' alt='modif'></a></td>"
 		$texto .= "<td>".$totaligne."</td>

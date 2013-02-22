@@ -57,15 +57,14 @@ switch($_POST['action']){
 	$mess ="newprod";
 	$page = "produit";
 	break;
-	case "modprod";
-	$_POST['stock'] = (($_POST['stock']<0)?"0":$_POST['stock']);
-	$montant1 = split('[.,]', $_POST['prix']);
-	$montant2 = implode (".", $montant1);
-	$_POST['prix'] = number_format($montant2, 2, '.', '');
-	list ($day, $month, $year) = split ("/", $_POST['date_commande']);
-	$_POST['date_commande'] = $year ."-". $month ."-". $day;
-	$ret->update('produit', '"' . $_GET['id'] . '"', 'id_categ="' . $_POST['categorie'] . '"',  'produit="' . $_POST['produit'] . '"',  'id_fournisseur="' . $_POST['fournisseur'] . '"',  'reference="' . $_POST['reference'] . '"',  'conditionnement="' . $_POST['conditionnement'] . '"',  'prix="' . $_POST['prix'] . '"',  'stock="' . $_POST['stock'] . '"',  'stock_mini="' . $_POST['stock_mini'] . '"',  'quantite_commande="' . $_POST['quantite_commande'] . '"', 'date_commande="' . $_POST['date_commande'] . '"',  'used="' . $_POST['used'] . '"',  'commande="' . $_POST['commande'] . '"');	
-	$mess ="changeprod";
+	case "modifcommande";
+	foreach ($_POST['idcmdlist'] as $value) {
+	if($_POST["qtcommande_".$value] > 0){
+		$ret->findupdate("UPDATE commande_list SET quantite_CMD=\"" . $_POST["qtcommande_".$value] . "\" WHERE id_cmd_list=\"". $value ."\"");
+	}
+			}
+
+	$mess ="modifqtcommande";
 	$page = "produit";
 	break;
 	case "effcommande";

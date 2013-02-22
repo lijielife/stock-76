@@ -23,6 +23,16 @@
 		$rajout_class = "&search=$que";
 		$elemrech = $que;
 		}}
+	
+	if (isset($_GET['manquant'])){
+	if($_GET['manquant']){
+		$fournis = mysql_real_escape_string($_GET['manquant']);
+		$rajout_requete = "AND (produit.stock < produit.stock_mini OR produit.commande=1) AND produit.used=1 ";
+		$rajout_class = "&manquant=oui";
+		$ordreby = ", produit.commande ASC" . $ordreby;
+	}}
+	
+	
 		
 	$allGET = "";
 	foreach ($_GET as $key => $value) {

@@ -56,7 +56,8 @@ $reqlacom = new db();
 $reqlacom->findquery("SELECT * FROM  `commande`, `fournisseur` WHERE commande.id_commande=$lacom AND commande.id_fournisseur=fournisseur.id_fournisseur ORDER BY date DESC");
 $detailcommande = $reqlacom->row();
 list ($cyear, $cmonth, $cday) = explode ("-", $detailcommande->date);
-$texto .= "<h3 style=\"page-break-before:always\" >&nbsp;&nbsp;$cday/$cmonth/$cyear </h3>\n";
+$texto .= "<h3 style=\"page-break-before:always; float:right\" >&nbsp;&nbsp;$cday/$cmonth/$cyear </h3>\n";
+$texto .= "<h2 >&nbsp;&nbsp;BON de COMMANDE </h2>\n";
 $texto.="<p>Commande $detailcommande->fournisseur du $cday/$cmonth/$cyear, n&deg; $detailcommande->num_facture &nbsp;&nbsp;&nbsp; $detailcommande->note </p><br>";
 $say = $reqpre->findquery("SELECT * FROM  `fournisseur` as fourn, `categ` as categ, `commande_list` as CMD_list, `produit`, `titre` WHERE CMD_list.id_commande=$lacom AND CMD_list.id_produit=produit.id_produit AND categ.id_categ=produit.id_categ AND fourn.id_fournisseur=produit.id_fournisseur AND categ.id_titre = titre.id_titre ORDER BY produit.id_produit");
 

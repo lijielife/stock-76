@@ -1,5 +1,5 @@
 <?php
-
+$lestitres = "";
 $texto .="<h3>Cr&eacute;ation de categorie</h3>";
 	$req = new db();
 	$req->findquery("SELECT * FROM `titre` WHERE 1 ORDER BY classement");

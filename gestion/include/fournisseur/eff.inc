@@ -6,7 +6,7 @@ $texto .="<h3>Suppression d'un fournisseur</h3>";
 	$lefourn = $req->row();
 	$req->findquery("SELECT * FROM produit WHERE id_fournisseur='".$_GET['id']."'");
 	if($req->__get('numrows')==0 AND $_GET['id']!="0"){
-	$texto .="<form method=\"POST\" action=\"./fournisseur?action=save\"><input type=\"hidden\" name=\"lid\" value=\"".$_GET['id']."\"><input type=\"hidden\" name=\"action\" value=\"efffourn\"><span class=\"affichage\">Etes-vous sur de vouloir supprimer ce fournisseur :</span > <b>$lefourn->fournisseur</b>
+	$texto .="<form method=\"POST\" action=\"./fournisseur?action=save\"><input type=\"hidden\" name=\"lid\" value=\"".$_GET['id']."\"><input type=\"hidden\" name=\"action\" value=\"efffourn\"><span class=\"affichage\">Etes-vous sur de vouloir supprimer ce fournisseur : <b>$lefourn->fournisseur</b></span >
 	<input type=\"submit\" name=\"submitbutton\" value=\"Supprimer\" id=\"submitbutton\">	<input type=\"button\" name=\"cancel\" value=\"annuler\" onClick=\"history.back()\"></form>";
 	}
 	else{

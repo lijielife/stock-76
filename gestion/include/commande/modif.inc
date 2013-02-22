@@ -50,8 +50,8 @@ $nbdeprod = $reqpre->__get('numrows');
 		<td> ".number_format($produit->prix, 2, ',', '')."</td>
 		<td> <b>$produit->stock</b></td>
 		<td> $produit->stock_mini</td>
-		<td><input type='hidden' name='cmd[]' value='$produit->id_produit' />
-		 <input style=\"width:50px\" class=\"actif\" name=\"qtcommande_$produit->id_produit\" size=\"4\" value=\"$qtprevu\" /></td>
+		<td><input type='hidden' name='idcmdlist[]' value='$produit->id_cmd_list' />
+		 <input style=\"width:50px\" class=\"actif\" name=\"qtcommande_$produit->id_cmd_list\" size=\"4\" value=\"$qtprevu\" /></td>
 		<td>$necessaire</td>";
 		$texto .= "
 		</tr>\n";
@@ -59,8 +59,7 @@ $nbdeprod = $reqpre->__get('numrows');
 		$nblignemax++;
 	}
     $texto .="</table>";
-	$texto .="<input type='hidden' name='nbdeprod' value='$nbdeprod' />
-	<input type=\"hidden\" name=\"action\" value=\"modifcommande\">
+	$texto .="<input type=\"hidden\" name=\"action\" value=\"modifcommande\">
 	<input class=\"large button orange\" 
  type=\"submit\" name=\"submitbutton\"  value=\"Modifier la commande\" id=\"submitbutton\">
 	<br />

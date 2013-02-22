@@ -1,5 +1,5 @@
 <?php
-
+	$lestitres = "";
 $texto .="<h3>Modification de categorie</h3>";
 	
 	$texto .=  "<span class=\"affichage\">Attention vous allez modifier une categorie, les produits y appartenant changeront de chapitre</span><br /><br />";
