@@ -1,7 +1,9 @@
 <?php
+$hosting = "http://" . $_SERVER['HTTP_HOST'];
 if($user != "orthodontie"){
 	$hosting = $hosting . "/stock";
 }
+
 function activmenu($value,$lapage)
 {
 
@@ -12,7 +14,6 @@ function activmenu($value,$lapage)
 		return "class=\"menu\"";
 	}
 }
-$hosting = "http://" . $_SERVER['HTTP_HOST'];
 $minimenu .= "<ul class=\"menu\">
 <li class=\"menu\"><a ".activmenu("titre",$lapage)." href=\"$hosting/gestion/titre\" >Famille</a> </li>
 <li class=\"menu\"><a ".activmenu("categorie",$lapage)." href=\"$hosting/gestion/categorie\" >Cat&eacute;gories</a> </li>

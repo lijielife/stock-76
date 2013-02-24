@@ -1,7 +1,17 @@
 <?php
 
 $reqpre = new db();
+
+		if (isset($_GET['id'])){
+	if($_GET['id']){
+		$tit = $_GET['id'];
+	$reqpre->findquery("SELECT * FROM categ LEFT JOIN titre ON categ.id_titre=titre.id_titre  WHERE categ.id_titre=$tit ORDER BY categ.categ");
+	}}
+	else{
 	$reqpre->findquery("SELECT * FROM categ LEFT JOIN titre ON categ.id_titre=titre.id_titre  WHERE 1 ORDER BY titre.titre");
+	}
+	
+	
 	$texto.= "<table cellspacing=\"0\" >
 	<tr>
 		<th class=\"listingcateg\">id</th>
